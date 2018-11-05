@@ -4,9 +4,16 @@ package domain;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Finder extends DomainEntity {
 
 	private String					key;
@@ -22,8 +29,8 @@ public class Finder extends DomainEntity {
 	private Collection<FixUpTask>	fixUpTasks;
 
 
-	@NotNull
 	@Valid
+	@ManyToMany
 	public Collection<FixUpTask> getFixUpTasks() {
 		return this.fixUpTasks;
 	}
@@ -34,6 +41,7 @@ public class Finder extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@ManyToOne(optional = false)
 	public HandyWorker getHandyWorker() {
 		return this.handyWorker;
 	}
