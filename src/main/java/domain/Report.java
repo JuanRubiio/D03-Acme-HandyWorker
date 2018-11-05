@@ -7,6 +7,9 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -36,8 +39,8 @@ public class Report extends DomainEntity {
 		this.moment = moment;
 	}
 
-	@NotNull
 	@Valid
+	@OneToMany
 	public Collection<Note> getCollectionNotes() {
 		return this.collectionNotes;
 	}
@@ -48,6 +51,7 @@ public class Report extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@OneToOne(optional = false)
 	public Complaint getComplaint() {
 		return this.complaint;
 	}
@@ -58,6 +62,7 @@ public class Report extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@ManyToOne(optional = false)
 	public Referee getReferee() {
 		return this.referee;
 	}
