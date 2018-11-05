@@ -3,17 +3,19 @@ package domain;
 
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
+@Entity
 public class Referee extends Actor {
 
 	private Collection<Report>		collectionReports;
 	private Collection<Complaint>	collectionComplaints;
 
 
-	@NotNull
 	@Valid
+	@OneToMany
 	public Collection<Report> getCollectionReports() {
 		return this.collectionReports;
 	}
@@ -22,8 +24,8 @@ public class Referee extends Actor {
 		this.collectionReports = collectionReports;
 	}
 
-	@NotNull
 	@Valid
+	@OneToMany
 	public Collection<Complaint> getCollectionComplaints() {
 		return this.collectionComplaints;
 	}
