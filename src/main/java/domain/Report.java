@@ -9,7 +9,8 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -26,11 +27,11 @@ public class Report extends DomainEntity {
 	private Boolean				draft;
 
 	private Collection<Note>	collectionNotes;
-	private Complaint			complaint;
 	private Referee				referee;
 
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -47,17 +48,6 @@ public class Report extends DomainEntity {
 
 	public void setCollectionNotes(final Collection<Note> collectionNotes) {
 		this.collectionNotes = collectionNotes;
-	}
-
-	@Valid
-	@NotNull
-	@OneToOne(optional = false)
-	public Complaint getComplaint() {
-		return this.complaint;
-	}
-
-	public void setComplaint(final Complaint complaint) {
-		this.complaint = complaint;
 	}
 
 	@Valid
