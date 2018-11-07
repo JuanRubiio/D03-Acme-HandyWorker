@@ -3,6 +3,9 @@ package domain;
 
 import java.util.Collection;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -10,6 +13,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Configuration extends DomainEntity {
 
 	// Atributos ---- 
@@ -47,7 +52,6 @@ public class Configuration extends DomainEntity {
 		this.finderDuration = finderDuration;
 	}
 
-	@NotBlank
 	@URL
 	public String getBanner() {
 		return this.banner;

@@ -4,13 +4,23 @@ package domain;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Message extends DomainEntity {
 
 	// Atributos ---- 
@@ -32,6 +42,8 @@ public class Message extends DomainEntity {
 
 
 	@NotNull
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getDate() {
 		return this.date;
 	}
@@ -41,6 +53,7 @@ public class Message extends DomainEntity {
 	}
 	@NotNull
 	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	public Actor getSender() {
 		return this.sender;
 	}
@@ -48,8 +61,10 @@ public class Message extends DomainEntity {
 	public void setSender(final Actor sender) {
 		this.sender = sender;
 	}
+
 	@NotNull
 	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	public Actor getRecipient() {
 		return this.recipient;
 	}
@@ -85,7 +100,7 @@ public class Message extends DomainEntity {
 	}
 
 	@NotBlank
-	@Pattern(regexp = "HIGH|NEUTRAL|LOW")
+	@Pattern(regexp = "^HIGH$|^NEUTRAL$|^LOW$")
 	public String getPriority() {
 		return this.priority;
 	}
@@ -97,19 +112,9 @@ public class Message extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Actor					actor;
 	private Collection<MessageBox>	messageBoxes;
 
 
-	@NotNull
-	@Valid
-	public Actor getActor() {
-		return this.actor;
-	}
-
-	public void setActor(final Actor actor) {
-		this.actor = actor;
-	}
 	@NotNull
 	@Valid
 	public Collection<MessageBox> getMessageBoxes() {
