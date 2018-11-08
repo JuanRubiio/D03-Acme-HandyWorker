@@ -1,6 +1,7 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
@@ -21,13 +22,13 @@ import org.hibernate.validator.constraints.URL;
 @Access(AccessType.PROPERTY)
 public class Complaint extends DomainEntity {
 
-	private String		ticker;
-	private Date		moment;
-	private String		description;
-	private String		attachements;
+	private String				ticker;
+	private Date				moment;
+	private String				description;
+	private String				attachements;
 	//external attributes
-	private Report		report;
-	private FixUpTask	fixUpTask;
+	private Collection<Report>	reports;
+	private FixUpTask			fixUpTask;
 
 
 	@NotBlank
@@ -67,12 +68,12 @@ public class Complaint extends DomainEntity {
 	@Valid
 	@NotNull
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "Complaint")
-	public Report getReport() {
-		return this.report;
+	public Collection<Report> getReports() {
+		return this.reports;
 	}
 
-	public void setReport(final Report report) {
-		this.report = report;
+	public void setReports(final Collection<Report> reports) {
+		this.reports = reports;
 	}
 
 	@Valid

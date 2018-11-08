@@ -24,7 +24,7 @@ public class Tutorial extends DomainEntity {
 	private String					title;
 	private Date					momentUpdate;
 	private String					summary;
-	private Collection<String>		pictures;
+	private String					pictures;
 	private Date					momentCreate;
 
 	//external attributes
@@ -59,11 +59,11 @@ public class Tutorial extends DomainEntity {
 		this.summary = summary;
 	}
 	@NotNull
-	public Collection<String> getPictures() {
+	public String getPictures() {
 		return this.pictures;
 	}
 
-	public void setPictures(final Collection<String> pictures) {
+	public void setPictures(final String pictures) {
 		this.pictures = pictures;
 	}
 
