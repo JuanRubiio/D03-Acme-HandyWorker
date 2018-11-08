@@ -3,12 +3,22 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Complaint extends DomainEntity {
 
 	private String		ticker;
@@ -16,7 +26,6 @@ public class Complaint extends DomainEntity {
 	private String		description;
 	private String		attachements;
 	//external attributes
-	private Referee		referee;
 	private Report		report;
 	private FixUpTask	fixUpTask;
 
@@ -30,6 +39,7 @@ public class Complaint extends DomainEntity {
 		this.ticker = ticker;
 	}
 	@NotNull
+	@Temporal(TemporalType.DATE)
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -56,16 +66,7 @@ public class Complaint extends DomainEntity {
 
 	@Valid
 	@NotNull
-	public Referee getReferee() {
-		return this.referee;
-	}
-
-	public void setReferee(final Referee referee) {
-		this.referee = referee;
-	}
-
-	@Valid
-	@NotNull
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "Complaint")
 	public Report getReport() {
 		return this.report;
 	}
@@ -76,6 +77,7 @@ public class Complaint extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@ManyToOne(optional = false)
 	public FixUpTask getFixUpTask() {
 		return this.fixUpTask;
 	}
