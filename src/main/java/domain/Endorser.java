@@ -10,15 +10,8 @@ import javax.validation.constraints.NotNull;
 @Access(AccessType.PROPERTY)
 public class Endorser extends Actor {
 
-	private Double	score;
-
-
 	@NotNull
 	public Double getScore() {
-		return this.score;
-	}
-
-	public void setScore(final Double score) {
-		this.score = score;
+		return null;
 	}
 }

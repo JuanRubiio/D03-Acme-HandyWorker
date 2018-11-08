@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Endorsement extends DomainEntity {
 
 	private Date	moment;
-	private String	comment;
+	private String	comments;
 
 
 	@NotNull
@@ -34,11 +34,11 @@ public class Endorsement extends DomainEntity {
 
 	@NotBlank
 	public String getComment() {
-		return this.comment;
+		return this.comments;
 	}
 
-	public void setComment(final String comment) {
-		this.comment = comment;
+	public void setComment(final String comments) {
+		this.comments = comments;
 	}
 
 
