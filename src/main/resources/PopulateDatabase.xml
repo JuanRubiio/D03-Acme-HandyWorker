@@ -19,7 +19,7 @@
 	<!-- User accounts -->
 
 	<bean id="userAccount1" class="security.UserAccount">
-		<property name="username" value="admin1" />
+		<property name="username" value="administrator1" />
 		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
 		<property name="authorities">
 			<list>
@@ -68,44 +68,45 @@
         <property name="finderDuration" value="60"/>
         <property name="maxFiders" value="10"/>
    		<property name="absolutMaxFinders" value="100"/>
-   		<property name="cards" value=""/>
-   		<property name="positiveSpanishWords" value = ""/>
-   		<property name="negativeSpanishWords" value=""/>
-   		<property name="positiveEnglishWords" value=""/>
-   		<property name="negativeEnglishWords" value=""/>
+   		<property name="cards" value="VISA;MASTER;DINNERS;AMEX"/>
+   		<property name="positiveSpanishWords" value ="bueno;fantástico;excelente;genial;increíble;fabuloso;hermoso"/>
+   		<property name="negativeSpanishWords" value="no;malo;horrible;promedio;desastre"/>
+   		<property name="positiveEnglishWords" value="good;fantastic;excellent;great;amazing;terrific;beautiful"/>
+   		<property name="negativeEnglishWords" value="not;bad;horrible;average;disaster"/>
    		
     </bean>
 	 <bean id="spam1" class="domain.Spam">
-        <property name="name" value="viagra"/>
+        <property name="spamWord" value="viagra"/>
     </bean>
 
     <bean id="spam2" class="domain.Spam">
-        <property name="name" value="cialis"/>
+        <property name="spamWord" value="cialis"/>
     </bean>
 
     <bean id="spam3" class="domain.Spam">
-        <property name="name" value="sex"/>
+        <property name="spamWord" value="sex"/>
     </bean>
 
     <bean id="spam4" class="domain.Spam">
-        <property name="name" value="one million"/>
+        <property name="spamWord" value="one million"/>
     </bean>
      <bean id="spam5" class="domain.Spam">
-        <property name="name" value="wou've been selected"/>
+        <property name="spamWord" value="wou've been selected"/>
     </bean>
      <bean id="spam6" class="domain.Spam">
-        <property name="name" value="Nigeria"/>
+        <property name="spamWord" value="Nigeria"/>
     </bean>
      <bean id="spam7" class="domain.Spam">
-        <property name="name" value="sexo"/>
+        <property name="spamWord" value="sexo"/>
     </bean>
      <bean id="spam8" class="domain.Spam">
-        <property name="name" value="un millión"/>
+        <property name="spamWord" value="un millión"/>
     </bean>
      <bean id="spam9" class="domain.Spam">
-        <property name="name" value="ha sido seleccionado"/>
+        <property name="spamWord" value="ha sido seleccionado"/>
     </bean>
-	  <bean id="creditCard1" class="domain.CreditCard">
+	 
+	 <bean id="creditCard1" class="domain.CreditCard">
         <property name="holderName" value="customer1"/>
         <property name="brandName" value="VISA"/>
         <property name="number" value="4532987197486407"/>
@@ -135,160 +136,242 @@
 
     </bean>
 
-
-    
-     <bean id="socialIdentity1" class="domain.SocialProfile">
+     <bean id="socialProfile1" class="domain.SocialProfile">
         <property name="nick" value="Juan"/>
-        <property name="socialNetwork" value="facebook"/>
-        <property name="linkProfile" value="http://www.google.com"/>
-        <property name="photo" value="http://www.google.com"/>
+        <property name="socialName" value="facebook"/>
+        <property name="link" value="http://www.google.com"/>
         <property name="actor" ref="customer1"/>
+    </bean>
+
+     <bean id="socialProfile2" class="domain.SocialProfile">
+        <property name="nick" value="Manuel"/>
+        <property name="socialName" value="facebook"/>
+        <property name="link" value="http://www.google.com"/>
+        <property name="actor" ref="customer2"/>
+    </bean>
+    
+     <bean id="socialProfile3" class="domain.SocialProfile">
+        <property name="nick" value="Jesus"/>
+        <property name="socialName" value="facebook"/>
+        <property name="link" value="http://www.google.com"/>
+        <property name="actor" ref="customer3"/>
     </bean>
     
     <bean id="category1" class="domain.Category">
-        <property name="name" value="CATEGORY"/>
+        <property name="engName" value="CATEGORY"/>
+        <property name="espName" value="CATEGORIA"/>
     </bean>
 
     <bean id="category2" class="domain.Category">
-        <property name="name" value="Carpentry"/>
+        <property name="engname" value="Carpentry"/>
+        <property name="espName" value="Carpintería"/>
         <property name="father" ref="category1"/>
     </bean>
 
     <bean id="category3" class="domain.Category">
-        <property name="name" value="Ceiling repair"/>
+        <property name="engName" value="Ceiling repair"/>
+        <property name="espName" value="Reparacion de techo"/>
         <property name="father" ref="category2"/>
     </bean>
 
     <bean id="category4" class="domain.Category">
-        <property name="name" value="Clearing"/>
+        <property name="engName" value="Clearing"/>
+        <property name="espName" value="Aclaramiento"/>
         <property name="father" ref="category3"/>
     </bean>
 
     <bean id="category5" class="domain.Category">
-        <property name="name" value="Concrete work"/>
+        <property name="engName" value="Concrete work"/>
+        <property name="espName" value="Trabajo concreto"/>
         <property name="father" ref="category3"/>
     </bean>
 
     <bean id="category6" class="domain.Category">
-        <property name="name" value="Doors"/>
+        <property name="engName" value="Doors"/>
+        <property name="espName" value="Puertas"/>
         <property name="father" ref="category2"/>
     </bean>
 
     <bean id="category7" class="domain.Category">
-        <property name="name" value="Electrical wiring"/>
+        <property name="engName" value="Electrical wiring"/>
+        <property name="espName" value="Cableado eléctrico"/>
         <property name="father" ref="category6"/>
     </bean>
 
     <bean id="category8" class="domain.Category">
-        <property name="name" value="Fan installation"/>
+        <property name="engName" value="Fan installation"/>
+        <property name="espName" value="Instalacion de ventilador"/>
         <property name="father" ref="category6"/>
     </bean>
 
     <bean id="category9" class="domain.Category">
-        <property name="name" value="Fence fixing"/>
+        <property name="engName" value="Fence fixing"/>
+        <property name="espName" value="Fijación de la cerca"/>
         <property name="father" ref="category1"/>
     </bean>
 
     <bean id="category10" class="domain.Category">
-        <property name="name" value="Home security systems"/>
+        <property name="engName" value="Home security systems"/>
+        <property name="espName" value="Sistemas de seguridad para el hogar"/>
         <property name="father" ref="category9"/>
     </bean>
 
     <bean id="category11" class="domain.Category">
-        <property name="name" value="Insulation installation"/>
+        <property name="engName" value="Insulation installation"/>
+        <property name="espName" value="Instalación de aislamiento"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category12" class="domain.Category">
-        <property name="name" value="Lamp repairs"/>
+        <property name="engName" value="Lamp repairs"/>
+        <property name="espName" value="Reparaciones de lamparas"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category13" class="domain.Category">
-        <property name="name" value="Moving"/>
+        <property name="engName" value="Moving"/>
+        <property name="espName" value="Motor"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category14" class="domain.Category">
-        <property name="name" value="Painting"/>
+        <property name="engName" value="Painting"/>
+        <property name="espName" value="Pintura"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category15" class="domain.Category">
-        <property name="name" value="Pest control"/>
+        <property name="engName" value="Pest control"/>
+        <property name="espName" value="Control de plagas"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category16" class="domain.Category">
-        <property name="name" value="Plumbing repairs"/>
+        <property name="engName" value="Plumbing repairs"/>
+        <property name="espName" value="Reparaciones de plomeria"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category17" class="domain.Category">
-        <property name="name" value="Roofing"/>
+        <property name="engName" value="Roofing"/>
+        <property name="espName" value="Techumbre"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category18" class="domain.Category">
-        <property name="name" value="Shelf installation"/>
+        <property name="engName" value="Shelf installation"/>
+        <property name="espName" value="Instalacion de estanteria"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category19" class="domain.Category">
-        <property name="name" value="Solar panels"/>
+        <property name="engName" value="Solar panels"/>
+        <property name="espName" value="Paneles solares"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category20" class="domain.Category">
-        <property name="name" value="Soundproofing"/>
+        <property name="engName" value="Soundproofing"/>
+        <property name="espName" value="Insonorización"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category21" class="domain.Category">
-        <property name="name" value="Sprinkler repair"/>
+        <property name="engName" value="Sprinkler repair"/>
+        <property name="espName" value="Reparacion de rociadores"/>
         <property name="father" ref="category10"/>
     </bean>
      <bean id="category22" class="domain.Category">
-        <property name="name" value="Window repair"/>
+        <property name="engName" value="Window repair"/>
+        <property name="espName" value="Reparacion de ventanas"/>
         <property name="father" ref="category10"/>
     </bean>
     
-     <bean id="folder1" class="domain.Folder">
+     <bean id="messageBox1" class="domain.MessageBox">
         <property name="name" value="in box"/>
-        <property name="actor" ref="admin1"/>
+        <property name="actor" ref="administrator1"/>
         <property name="system" value="true"/>
     </bean>
 
-    <bean id="folder2" class="domain.Folder">
+    <bean id="messageBox2" class="domain.MessageBox">
         <property name="name" value="out box"/>
-        <property name="actor" ref="admin1"/>
+        <property name="actor" ref="administrator1"/>
         <property name="system" value="true"/>
     </bean>
 
-    <bean id="folder3" class="domain.Folder">
+    <bean id="messageBox3" class="domain.MessageBox">
         <property name="name" value="trash box"/>
-        <property name="actor" ref="admin1"/>
+        <property name="actor" ref="administrator1"/>
         <property name="system" value="true"/>
     </bean>
 
-    <bean id="folder4" class="domain.Folder">
+    <bean id="messageBox4" class="domain.MessageBox">
         <property name="name" value="spam box"/>
-        <property name="actor" ref="customer1"/>
+        <property name="actor" ref="administrator1"/>
         <property name="system" value="true"/>
     </bean>
     
-     <bean id="folder5" class="domain.Folder">
+     <bean id="messageBox5" class="domain.MessageBox">
         <property name="name" value="in box"/>
         <property name="actor" ref="customer1"/>
         <property name="system" value="true"/>
     </bean>
 
-    <bean id="folder6" class="domain.Folder">
+    <bean id="messageBox6" class="domain.MessageBox">
         <property name="name" value="out box"/>
         <property name="actor" ref="customer1"/>
         <property name="system" value="true"/>
     </bean>
 
  
-    <bean id="folder7" class="domain.Folder">
+    <bean id="messageBox7" class="domain.MessageBox">
         <property name="name" value="trash box"/>
         <property name="actor" ref="customer1"/>
         <property name="system" value="true"/>
     </bean>
 
-    <bean id="folder8" class="domain.Folder">
+    <bean id="messageBox8" class="domain.MessageBox">
         <property name="name" value="spam box"/>
         <property name="actor" ref="customer1"/>
+        <property name="system" value="true"/>
+    </bean>
+  
+     <bean id="messageBox9" class="domain.MessageBox">
+        <property name="name" value="in box"/>
+        <property name="actor" ref="customer2"/>
+        <property name="system" value="true"/>
+    </bean>
+
+    <bean id="messageBox10" class="domain.MessageBox">
+        <property name="name" value="out box"/>
+        <property name="actor" ref="customer2"/>
+        <property name="system" value="true"/>
+    </bean>
+
+ 
+    <bean id="messageBox11" class="domain.MessageBox">
+        <property name="name" value="trash box"/>
+        <property name="actor" ref="customer2"/>
+        <property name="system" value="true"/>
+    </bean>
+
+    <bean id="messageBox12" class="domain.MessageBox">
+        <property name="name" value="spam box"/>
+        <property name="actor" ref="customer2"/>
+        <property name="system" value="true"/>
+    </bean>
+    <bean id="messageBox13" class="domain.MessageBox">
+        <property name="name" value="in box"/>
+        <property name="actor" ref="customer2"/>
+        <property name="system" value="true"/>
+    </bean>
+
+    <bean id="messageBox14" class="domain.MessageBox">
+        <property name="name" value="out box"/>
+        <property name="actor" ref="customer2"/>
+        <property name="system" value="true"/>
+    </bean>
+
+ 
+    <bean id="messageBox15" class="domain.MessageBox">
+        <property name="name" value="trash box"/>
+        <property name="actor" ref="customer2"/>
+        <property name="system" value="true"/>
+    </bean>
+
+    <bean id="messageBox16" class="domain.MessageBox">
+        <property name="name" value="spam box"/>
+        <property name="actor" ref="customer2"/>
         <property name="system" value="true"/>
     </bean>
     

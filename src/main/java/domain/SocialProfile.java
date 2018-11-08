@@ -18,7 +18,7 @@ public class SocialProfile extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String	nik;
+	private String	nick;
 	private String	socialName;
 	private String	link;
 	private Actor	actor;
@@ -26,11 +26,11 @@ public class SocialProfile extends DomainEntity {
 
 	@NotBlank
 	public String getNik() {
-		return this.nik;
+		return this.nick;
 	}
 
 	public void setNik(final String nik) {
-		this.nik = nik;
+		this.nick = nik;
 	}
 
 	@NotBlank
