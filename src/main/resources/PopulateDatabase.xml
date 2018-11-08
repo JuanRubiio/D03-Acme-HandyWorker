@@ -60,83 +60,143 @@
 	<!-- Other domain beans come here -->	
 	
 	<bean id="handyWorker1" class="domain.HandyWorker">
+		<property name="name" value="David"/>
+		<property name="surname" value="Broncano Aguilera"/>
+		<property name="middlename" value=""/>
+		<property name="photo" value="http://www.google.com"/>
+		<property name="email" value="broncano@gmail.com"/>
+		<property name="address" value="Orcera"/>
+		<property name="phone" value="660011448"/>
 		<property name="mark" value="David Broncano Aguilera"/>
+		<property name="curriculum" ref="curriculum1"/> 
 	</bean>
 	
 	<bean id="handyWorker2" class="domain.HandyWorker">
-		<property name="mark" value="Alberto Romero Tomás,"/>
+	<property name="name" value="Alberto"/>
+		<property name="surname" value="Romero Tomás"/>
+		<property name="middlename" value=""/>
+		<property name="photo" value="http://www.google.com"/>
+		<property name="email" value="berto@gmail.com"/>
+		<property name="address" value="Calle Buenafuente"/>
+		<property name="phone" value="660011148"/>
+		<property name="mark" value="Alberto Romero Tomás"/>
+		<property name="curriculum" ref="curriculum2"/> 
 	</bean>
 	
 	<bean id="fixUpTask1" class="domain.FixUpTask">
-		<property name="ticker" value="PFCH"/>
+		<property name="ticker" value="181109-PLFDLC"/>
 		<property name="moment" value="09/11/18 23:59"/>
 		<property name="description" value="Pintar la fachada de la casa 2"/>
 		<property name="address" value="Calle Morón(Huelva)"/>
 		<property name="maxPrice" value="215.00"/>
 		<property name="maxDate" value="26/11/18 12:00"/>
 		<property name="minDate" value="13/11/18 10:05"/>
+		<property name="complaint">
+				<list>
+					<ref bean="complaint1"/>
+				</list>
+		</property>
+		<property name="warranty" ref="warranty1"/>
+		<property name="category" ref="category10"/>		
 	</bean>
 	
 	<bean id="fixUpTask2" class="domain.FixUpTask">
-		<property name="ticker" value="ATCM"/>
+		<property name="ticker" value="181114-ALTDLC"/>
 		<property name="moment" value="14/11/18 13:29"/>
-		<property name="description" value="Arreglar tejas de la casa"/>
+		<property name="description" value="Arreglar las tejas de la casa"/>
 		<property name="address" value="Calle Betis(Madrid)"/>
 		<property name="maxPrice" value="180.50"/>
 		<property name="maxDate" value="20/11/18 10:00"/>
-		<property name="minDate" value="09/11/18 13:45"/>
+		<property name="minDate" value="18/11/18 13:45"/>
+		<property name="complaint">
+				<list>
+					<ref bean="complaint2"/>
+				</list>
+		</property>
+		<property name="warranty" ref="warranty2"/>
+		<property name="category" ref="category5"/>	
 	</bean>
 	
 	<bean id="fixUpTask3" class="domain.FixUpTask">
-		<property name="ticker" value="TPEA"/>
-		<property name="moment" value="20/11/18 08:25"/>
+		<property name="ticker" value="181120-TLPEAA"/>
+		<property name="moment" value="10/11/18 08:25"/>
 		<property name="description" value="Tirar la pared exterior abajo"/>
 		<property name="address" value="Plaza Duque(Sevilla)"/>
 		<property name="maxPrice" value="840.69"/>
 		<property name="maxDate" value="18/12/18 17:00"/>
-		<property name="minDate" value="09/11/18 12:50"/>
+		<property name="minDate" value="14/11/18 12:50"/>
+		<property name="complaint">
+				<list>
+				
+				</list>
+		</property>
+	<property name="warranty" ref="warranty2"/>
+		<property name="category" ref="category2"/>		
 	</bean>
 	
 	<bean id="fixUpTask4" class="domain.FixUpTask">
-		<property name="ticker" value="AIPM"/>
-		<property name="moment" value="12/12/18 17:44"/>
+		<property name="ticker" value="181212-AIDPPY"/>
+		<property name="moment" value="12/11/18 17:44"/>
 		<property name="description" value="Arreglar inodoro de pisos"/>
 		<property name="address" value="Calle Sevilla(Alicante)"/>
 		<property name="maxPrice" value="470.00"/>
-		<property name="maxDate" value="15/11/18 10:00"/>
-		<property name="minDate" value="12/11/18 18:45"/>
+		<property name="maxDate" value="17/11/18 10:00"/>
+		<property name="minDate" value="13/11/18 18:45"/>
+		<property name="complaint">
+			<list>
+			
+			</list>
+		</property>
+		<property name="warranty" ref="warranty1"/>
+		<property name="category" ref="category4"/>	
 	</bean>
 	
-	<bean id="Application1" class="domain.Application">
-		<property name="moment" value="13/11/18 20:00"/>
+		<bean id="phase1" class="domain.Phase">
+		<property name="title" value="Alpha"/>
+		<property name="description" value="Estamos haciendo unas pruebas"/>
+		<property name="startMoment" value="15/11/18 18:04"/>
+		<property name="endMoment" value="16/11/18 10:15"/>
+		<property name="ordered" value="1"/>
+	</bean>
+	
+	<bean id="phase2" class="domain.Phase">
+		<property name="title" value="Beta"/>
+		<property name="description" value="Ya va bien"/>
+		<property name="startMoment" value="14/11/18 20:00"/>
+		<property name="endMoment" value="16/11/18 11:00"/>
+		<property name="ordered" value="1"/>
+	</bean>
+	
+	
+	<bean id="application1" class="domain.Application">
+		<property name="moment" value="14/11/18 20:00"/>
 		<property name="status" value="ACCEPTED"/>
-		<property name="customerComment" value="Pues me cobró 450euros"/>
+		<property name="customerComment" value="Alguien que me ayude"/>
 		<property name="price" value ="450.00"/>
-		<property name="handyWorkerComments" value="Tenía que haber pedido más"/>
+		<property name="handyWorkerComments" value="Te lo arreglo yo"/>
+		<property name="handyWorker" ref="handyWorker1"/>
+		<property name="phase">
+			<list>
+				<ref bean="phase2"/>
+			</list>
+		</property>
+		<property name="fixUpTask" ref="fixUpTask1"/>
 	</bean>	
 	
-	<bean id="Application2" class="domain.Application">
+	<bean id="application2" class="domain.Application">
 		<property name="moment" value="15/11/18 10:00"/>
 		<property name="status" value="ACCEPTED"/>
 		<property name="customerComment" value="Pues no se quedó muy bien la fachada"/>
 		<property name="price" value ="200.00"/>
 		<property name="handyWorkerComments" value="Normal,si pusistes la pintura barata, tacaño"/>
+		<property name="handyWorker" ref="handyWorker2"/>
+		<property name="phase">
+			<list>
+				<ref bean="phase1"/>
+			</list>
+		</property>
+		<property name="fixUpTask" ref="fixUpTask2"/>
 	</bean>	
 	
-	<bean id="Phase1" class="domain.Phase">
-		<property name="title" value="Alpha"/>
-		<property name="description" value="Estamos haciendo unas pruebas"/>
-		<property name="startMoment" value="07/07/17 18:04"/>
-		<property name="endMoment" value="20/07/17 10:15"/>
-		<property name="ordered" value="1"/>
-	</bean>
-	
-	<bean id="Phase2" class="domain.Phase">
-		<property name="title" value="Beta"/>
-		<property name="description" value="Ya va bien"/>
-		<property name="startMoment" value="1/08/18 18:04"/>
-		<property name="endMoment" value="20/09/18 12:15"/>
-		<property name="ordered" value="1"/>
-	</bean>
-	
+
 </beans>
