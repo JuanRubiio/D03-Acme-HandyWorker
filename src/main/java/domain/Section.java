@@ -1,22 +1,26 @@
 
 package domain;
 
-import java.util.Collection;
-
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Section extends DomainEntity {
 
-	private String				title;
-	private String				text;
-	private Collection<String>	pictures;
-	private Integer				order;
+	private String		title;
+	private String		text;
+	private String		pictures;
+	private Integer		order;
 
 	//external attributes
-	private Tutorial			tutorial;
+	private Tutorial	tutorial;
 
 
 	@NotBlank
@@ -36,11 +40,11 @@ public class Section extends DomainEntity {
 		this.text = text;
 	}
 	@NotNull
-	public Collection<String> getPictures() {
+	public String getPictures() {
 		return this.pictures;
 	}
 
-	public void setPictures(final Collection<String> pictures) {
+	public void setPictures(final String pictures) {
 		this.pictures = pictures;
 	}
 	@NotNull
@@ -54,6 +58,7 @@ public class Section extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@ManyToOne(optional = false)
 	public Tutorial getTutorial() {
 		return this.tutorial;
 	}

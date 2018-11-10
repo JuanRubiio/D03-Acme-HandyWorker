@@ -1,16 +1,23 @@
 
 package domain;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
+@Embeddable
+@Access(AccessType.PROPERTY)
 public class CreditCard {
 
 	private String	holderName;
 	private String	brandName;
+	@Column(unique = true)
 	private String	number;
 	private Integer	expiryMonth;
 	private Integer	expiryYear;
