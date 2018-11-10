@@ -1006,5 +1006,109 @@
 </bean>
 >>>>>>> dev_jose
 	
+<<<<<<< HEAD
 >>>>>>> dev_regina
+=======
+	<bean id="endorser1" class="domain.Endorser">
+		<property name="name" value="Juan" />
+		<property name="surname" value="Delgado Alvarez" />
+		<property name="middleName" value="José" />
+		<property name="email" value="juanito_58@gmail.com" />
+		<property name="phone" value="689346702" />
+		<property name="adress" value="C/ Esperanza de Triana nº 22" />
+		<property name="photo" value="https://www.facebook.com/photo.php?fbid=166193483483453518407" />
+	</bean>
+	
+		<bean id="endorser2" class="domain.Endorser">
+		<property name="name" value="Jorge" />
+		<property name="surname" value="Sainz Brun" />
+		<property name="middleName" value="Javier" />
+		<property name="email" value="jbolaarobatico29@hotmail.com" />
+		<property name="phone" value="637501693" />
+		<property name="adress" value="C/ Tunante nº 12 1º B" />
+		<property name="photo" value="https://www.linkedin.com/in/jsainetebrun/detail/photo/" />
+	</bean>
+	
+	<bean id="endorser3" class="domain.Endorser">
+		<property name="name" value="Javier" />
+		<property name="surname" value="Diaz Guerrero" />
+		<property name="middleName" value=" " />
+		<property name="email" value="jdiazg@gmail.com" />
+		<property name="phone" value="693013589" />
+		<property name="adress" value="C/ Calatrava nº 29 Portal 3 2º A" />
+		<property name="photo" value="https://www.linkedin.com/in/jdiazguerrero/detail/photo/" />
+	</bean>
+	
+	<bean id="endorsement1" class="domain.Endorsement">
+		<property name="moment" value="04/11/18 13:53" />
+		<property name="comments" value="Ha sido un gran profesional" />
+		<property name="writeFrom" ref="endorser1" />
+		<property name="writeTo" ref="endorser3" />
+	</bean>
+	
+	<bean id="endorsement2" class="domain.Endorsement">
+		<property name="moment" value="06/11/18 21:45" />
+		<property name="comments" value="Poco eficiente" />
+		<property name="writeFrom" ref="endorser2" />
+		<property name="writeTo" ref="endorser3" />
+	</bean>
+	
+	<bean id="sponsor1" class="domain.Sponsor">
+		<property name="name" value="Antonio" />
+		<property name="surname" value="Chaves Ortiz" />
+		<property name="middleName" value="José" />
+		<property name="email" value="ajchaves98@gmail.com" />
+		<property name="phone" value="610459462" />
+		<property name="adress" value="C/ Jesus del Gran Poder nº 8" />
+		<property name="photo" value="https://www.linkedin.com/in/tony68/detail/photo/"/>
+	</bean>
+	
+	<bean id="sponsor2" class="domain.Sponsor">
+		<property name="name" value="Silvia" />
+		<property name="surname" value="Hernandez Laguna" />
+		<property name="middleName" value="" />
+		<property name="email" value="silbitri@hotmail.com" />
+		<property name="phone" value="660357903" />
+		<property name="adress" value="C/ Maestro Quiroga nº 4 6º C" />
+		<property name="photo" value="https://www.linkedin.com/in/silvihernadez/detail/photo/" />
+	</bean>
+	
+	<bean id="sponsorship1" class="domain.Sponsorship">
+		<property name="banner" value="https://www.sponsorshipstutorials.com/id=289/picture" />
+		<property name="link" value="https://www.sponsorshipstutorials.com/id=289/" />
+		<property name="creditCard" ref="creditCard1" />
+		<property name="tutorial" ref="tutorial1" />
+		<property name="sponsor" ref="sponsor1" />
+	</bean>
+	
+	<bean id="sponsorship2" class="domain.Sponsorship">
+		<property name="banner" value="https://www.sponsorshipstutorials.com/id=469/picture" />
+		<property name="link" value="https://www.sponsorshipstutorials.com/id=469/" />
+		<property name="creditCard" ref="creditCard2" />
+		<property name="tutorial" ref="tutorial1" />
+		<property name="sponsor" ref="sponsor2" />
+	</bean>
+	
+	<bean id="warranty1" class="domain.Warranty">
+		<property name="title" value="IMPORTANT" />
+		<property name="terms" value="terms1" />
+	 	<property name="law" value="law1" />
+	 	<property name="draft" value="TRUE" />
+	</bean>
+	
+	<bean id="warranty2" class="domain.Warranty">
+		<property name="title" value="NORMAL" />
+		<property name="terms" value="terms2" />
+	 	<property name="law" value="law2" />
+	 	<property name="draft" value="FALSE" />
+	</bean>
+	
+	<bean id="warranty3" class="domain.Warranty">
+		<property name="title" value="EXPENDABLE" />
+		<property name="terms" value="terms3" />
+	 	<property name="law" value="law3" />
+	 	<property name="draft" value="FALSE" />
+	</bean>
+	
+>>>>>>> dev_javi
 </beans>

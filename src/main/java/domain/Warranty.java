@@ -1,13 +1,15 @@
 
 package domain;
 
-import java.util.Collection;
-
-import javax.validation.Valid;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Warranty extends DomainEntity {
 
 	private String	title;
@@ -50,22 +52,6 @@ public class Warranty extends DomainEntity {
 
 	public void setLaws(final String laws) {
 		this.laws = laws;
-	}
-
-
-	//Relationship
-
-	private Collection<FixUpTask>	task;
-
-
-	@NotNull
-	@Valid
-	public Collection<FixUpTask> getTask() {
-		return this.task;
-	}
-
-	public void setTask(final Collection<FixUpTask> task) {
-		this.task = task;
 	}
 
 }
