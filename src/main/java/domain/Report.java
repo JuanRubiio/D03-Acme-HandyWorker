@@ -4,12 +4,21 @@ package domain;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Report extends DomainEntity {
 
 	private Date				moment;
@@ -18,11 +27,11 @@ public class Report extends DomainEntity {
 	private Boolean				draft;
 
 	private Collection<Note>	collectionNotes;
-	private Complaint			complaint;
 	private Referee				referee;
 
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -31,8 +40,8 @@ public class Report extends DomainEntity {
 		this.moment = moment;
 	}
 
-	@NotNull
 	@Valid
+	@OneToMany
 	public Collection<Note> getCollectionNotes() {
 		return this.collectionNotes;
 	}
@@ -43,16 +52,7 @@ public class Report extends DomainEntity {
 
 	@Valid
 	@NotNull
-	public Complaint getComplaint() {
-		return this.complaint;
-	}
-
-	public void setComplaint(final Complaint complaint) {
-		this.complaint = complaint;
-	}
-
-	@Valid
-	@NotNull
+	@ManyToOne(optional = false)
 	public Referee getReferee() {
 		return this.referee;
 	}

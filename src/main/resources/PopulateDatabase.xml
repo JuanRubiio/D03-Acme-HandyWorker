@@ -94,6 +94,7 @@
 			</list>
 		</property>
 	</bean>
+<<<<<<< HEAD
 	<bean id="userAccount8" class="security.UserAccount">
 		<property name="username" value="sponsor1" />
 		<property name="password" value="42c63ad66d4dc07ed17753772bef96d6" />
@@ -763,4 +764,141 @@
 	</bean>
 	<!-- Other domain beans come here -->
 
+=======
+	
+	<!-- Other domain beans come here -->	
+	<bean id="administrator1" class="domain.Administrator">
+	<property name="name" value="Juan" />
+	<property name="middlename" value="Lopez" />
+	<property name="surname" value="Martin" />
+	<property name="photo" value="http://www.google.com" />
+	<property name="email" value="administrator1@gmail.com" />
+	<property name="address" value="administratoraddress1" />
+	<property name="phone" value="666666666" />
+</bean>	
+
+<bean id="administrator2" class="domain.Administrator">
+	<property name="name" value="Carlos" />
+	<property name="middlename" value="Ramirez" />
+	<property name="surname" value="Ramos" />
+	<property name="photo" value="http://www.google.com" />
+	<property name="email" value="administrator2@gmail.com" />
+	<property name="address" value="administratoraddress2" />
+	<property name="phone" value="666666688" />
+</bean>	
+
+<bean id="referee1" class="domain.Referee">
+	<property name="name" value="Regina" />
+	<property name="middlename" value="Escalera" />
+	<property name="surname" value="Martin" />
+	<property name="photo" value="http://www.google.com" />
+	<property name="email" value="referee1@gmail.com" />
+	<property name="address" value="refereeaddress1" />
+	<property name="phone" value="666666666" />
+</bean>	
+
+<bean id="referee2" class="domain.Referee">
+	<property name="name" value="Javier" />
+	<property name="middlename" value="Marin" />
+	<property name="surname" value="Jimenez" />
+	<property name="photo" value="http://www.google.com" />
+	<property name="email" value="referee2@gmail.com" />
+	<property name="address" value="refereeaddress2" />
+	<property name="phone" value="666666666" />
+</bean>	
+
+<bean id="note1" class="domain.Note">
+	<property name="moment" value="24/10/2018 03:00" />
+	<property name="mandatoryComment" value="mandatoryComment1" />
+	<property name="handyworkerComment" value="handyworkerComment1" />
+	<property name="customerComments" value="customerComments1" />
+	<property name="refereeComments" value="refereeComments1" />
+</bean>
+
+<bean id="note2" class="domain.Note">
+	<property name="moment" value="25/11/2018 03:00" />
+	<property name="mandatoryComment" value="mandatoryComment2" />
+	<property name="handyworkerComment" value="handyworkerComment2" />
+	<property name="customerComments" value="customerComments2" />
+	<property name="refereeComments" value="refereeComments2" />
+</bean>
+
+<bean id="note3" class="domain.Note">
+	<property name="moment" value="14/10/2018 03:00" />
+	<property name="mandatoryComment" value="mandatoryComment3" />
+	<property name="handyworkerComment" value="handyworkerComment3" />
+	<property name="customerComments" value="customerComments3" />
+	<property name="refereeComments" value="refereeComments3" />
+</bean>
+
+<bean id="note4" class="domain.Note">
+	<property name="moment" value="26/06/2018 03:00" />
+	<property name="mandatoryComment" value="mandatoryComment4" />
+	<property name="handyworkerComment" value="handyworkerComment4" />
+	<property name="customerComments" value="customerComments4" />
+	<property name="refereeComments" value="refereeComments4" />
+</bean>
+
+<bean id="note5" class="domain.Note">
+	<property name="moment" value="20/06/2018 03:00" />
+	<property name="mandatoryComment" value="mandatoryComment5" />
+	<property name="handyworkerComment" value="handyworkerComment5" />
+	<property name="customerComments" value="customerComments5" />
+	<property name="refereeComments" value="refereeComments5" />
+</bean>
+
+<bean id="report1" class="domain.Report">
+	<property name="moment" value="01/02/2017 23:59" />
+	<property name="description" value="description1" />
+	<property name="attachements" value="attachements1" />
+	<property name="draft" value="true" />
+	<property name="referee" ref="referee1" />
+	<property name="collectionNotes">
+		<list>
+			<ref bean="note1" />
+			<ref bean="note2" />
+		</list>
+	</property>
+</bean>	
+
+<bean id="report2" class="domain.Report">
+	<property name="moment" value="01/12/2017 23:59" />
+	<property name="description" value="description2" />
+	<property name="attachements" value="attachements2" />
+	<property name="draft" value="true" />
+	<property name="referee" ref="referee1" />
+	<property name="collectionNotes">
+		<list>
+			<ref bean="note3" />
+		</list>
+	</property>
+</bean>	
+
+<bean id="report3" class="domain.Report">
+	<property name="moment" value="01/02/2018 23:59" />
+	<property name="description" value="description3" />
+	<property name="attachements" value="attachements3" />
+	<property name="draft" value="false" />
+	<property name="referee" ref="referee2" />
+	<property name="collectionNotes">
+		<list>
+			<ref bean="note4" />
+		</list>
+	</property>
+</bean>	
+
+<bean id="report4" class="domain.Report">
+	<property name="moment" value="24/10/2018 03:59" />
+	<property name="description" value="description4" />
+	<property name="attachements" value="attachements4" />
+	<property name="draft" value="true" />
+	<property name="referee" ref="referee2" />
+	<property name="collectionNotes">
+		<list>
+			<ref bean="note5" />
+		</list>
+	</property>
+</bean>	
+	
+>>>>>>> dev_regina
 </beans>
