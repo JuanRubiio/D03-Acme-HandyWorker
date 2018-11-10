@@ -1,15 +1,19 @@
 
 package domain;
 
-import java.util.Collection;
-
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+
+
 @Entity
+@Access(AccessType.PROPERTY)
 public class HandyWorker extends Endorser {
 
 	//------Atributos---------
@@ -29,50 +33,20 @@ public class HandyWorker extends Endorser {
 
 	//---------Relationships--------------
 
-	private Collection<Tutorial>	tutorial;
+	//private Collection<Tutorial>	tutorial;
 	private Curriculum				curriculum;
-	private Collection<Finder>		finder;
-	private Collection<Apply>		apply;
-
-
-	@NotNull
-	@Valid
-	public Collection<Tutorial> getTutorial() {
-		return this.tutorial;
-	}
-
-	public void setTutorial(final Collection<Tutorial> tutorial) {
-		this.tutorial = tutorial;
-	}
+	//private Collection<Finder>		finder;
+	//private Collection<Application>		apply;
 
 	@NotNull
 	@Valid
+	@OneToOne(optional=false)
 	public Curriculum getCurriculum() {
 		return this.curriculum;
 	}
 
 	public void setCurriculum(final Curriculum curriculum) {
 		this.curriculum = curriculum;
-	}
-
-	@NotNull
-	@Valid
-	public Collection<Finder> getFinder() {
-		return this.finder;
-	}
-
-	public void setFinder(final Collection<Finder> finder) {
-		this.finder = finder;
-	}
-
-	@NotNull
-	@Valid
-	public Collection<Apply> getApply() {
-		return this.apply;
-	}
-
-	public void setApply(final Collection<Apply> apply) {
-		this.apply = apply;
 	}
 
 }

@@ -3,13 +3,15 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
+@Access(AccessType.PROPERTY)
 public class Phase extends DomainEntity {
 
 	//--------Atributos-------
@@ -68,17 +70,7 @@ public class Phase extends DomainEntity {
 
 
 	//----------RelationShips------
-	private Apply	apply;
+	//private Application	apply;
 
-
-	@NotNull
-	@Valid
-	public Apply getApply() {
-		return this.apply;
-	}
-
-	public void setApply(final Apply apply) {
-		this.apply = apply;
-	}
 
 }
