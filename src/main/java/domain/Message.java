@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -24,21 +23,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Message extends DomainEntity {
 
 	// Atributos ---- 
-	private Date				date;
+	private Date	date;
 
-	private Actor				sender;
+	private Actor	sender;
 
-	private Actor				recipient;
+	private Actor	recipient;
 
-	private String				subject;
+	private String	subject;
 
-	private String				body;
+	private String	body;
 
-	private String				priority;
+	private String	priority;
 
-	private Boolean				spam	= false;
+	private Boolean	spam	= false;
 
-	private Collection<String>	tags;
+	private String	tags;
 
 
 	@NotNull
@@ -125,12 +124,11 @@ public class Message extends DomainEntity {
 		this.messageBoxes = messageBoxes;
 	}
 
-	@NotEmpty
-	public Collection<String> getTags() {
+	public String getTags() {
 		return this.tags;
 	}
 
-	public void setTags(final Collection<String> tags) {
+	public void setTags(final String tags) {
 		this.tags = tags;
 	}
 
