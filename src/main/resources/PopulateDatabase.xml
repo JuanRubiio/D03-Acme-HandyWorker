@@ -59,4 +59,104 @@
 	
 	<!-- Other domain beans come here -->	
 	
+ 
+	<bean id="curriculum1" class="domain.Curriculum">
+        <property name="ticker" value="000000-ZZZZ"/>
+        <property name="handyWorker" ref="handyWorker1"/>
+    </bean>
+
+    <bean id="curriculum2" class="domain.Curriculum">
+        <property name="ticker" value="000000-ZZZY"/>
+        <property name="handyWorker" ref="handyWorker2"/>
+    </bean>
+
+	<bean id="personalRecord1" class="domain.PersonalRecord">
+        <property name="name" value="handyWorker1"/>
+        <property name="photo" value="http://www.google.es"/>
+        <property name="email" value="handyWorker1@mail.com"/>
+        <property name="phoneNumber" value="123456789"/>
+        <property name="linkedinIdProfile" value="http://www.google.es"/>
+        <property name="curriculum" ref="curriculum1"/>
+    </bean>
+
+    <bean id="personalRecord2" class="domain.PersonalRecord">
+        <property name="name" value="handyWorker2"/>
+        <property name="photo" value="http://www.google.es"/>
+        <property name="email" value="handyWorker2@mail.com"/>
+        <property name="phoneNumber" value="123456789"/>
+        <property name="linkedinIdProfile" value="http://www.google.es"/>
+        <property name="curriculum" ref="curriculum2"/>
+    </bean>
+    
+    <bean id="educationalRecord1" class="domain.EducationalRecord">
+        <property name="title" value="title1"/>
+		<property name="institution" value="institution"/>
+        <property name="attachment" value="http://www.google.es"/>
+		<property name="comments" value="comments"/>
+		<property name="end" value="08/01/2016"/>
+		<property name="begin" value="01/01/2016"/>      
+        <property name="curriculum" ref="curriculum1"/>
+    </bean>
+
+    <bean id="educationalRecord2" class="domain.EducationalRecord">
+        <property name="title" value="title"/>
+		<property name="institution" value="institution"/>
+		<property name="attachment" value="http://www.google.es"/>
+		<property name="comments" value="comments"/>
+		<property name="end" value="08/01/2016"/>
+        <property name="begin" value="01/01/2016"/>
+        <property name="curriculum" ref="curriculum2"/>
+    </bean>
+
+    <bean id="professionalRecord1" class="domain.ProfessionalRecord">
+        <property name="companyName" value="company"/>
+        <property name="begin" value="01/01/2017"/>
+        <property name="end" value="08/01/2017"/>
+        <property name="role" value="role"/>
+		<property name="attachment" value="http://www.google.es"/>
+		<property name="comments" value="comments"/>
+        <property name="curriculum" ref="curriculum1"/>
+    </bean>
+
+    <bean id="professionalRecord2" class="domain.ProfessionalRecord">
+        <property name="companyName" value="company"/>
+        <property name="begin" value="01/01/2017"/>
+        <property name="end" value="08/01/2017"/>
+        <property name="role" value="role"/>
+		<property name="attachment" value="http://www.google.es"/>
+		<property name="comments" value="comments"/>
+        <property name="curriculum" ref="curriculum2"/>
+    </bean>
+
+    <bean id="endorserRecord1" class="domain.EndorserRecord">
+        <property name="name" value="endorser"/>
+        <property name="email" value="endorser@mail.com"/>
+        <property name="phoneNumber" value="123456789"/>
+		<property name="attachment" value="http://www.google.es"/>
+		<property name="comments" value="comments"/>
+        <property name="curriculum" ref="curriculum1"/>
+    </bean>
+
+    <bean id="endorserRecord2" class="domain.EndorserRecord">
+        <property name="name" value="endorser"/>
+        <property name="email" value="endorser@mail.com"/>
+        <property name="phoneNumber" value="123456789"/>
+		<property name="attachment" value="http://www.google.es"/>
+		<property name="comments" value="comments"/>
+        <property name="curriculum" ref="curriculum2"/>
+    </bean>
+
+    <bean id="miscellaneusRecord1" class="domain.MiscellaneousRecord">
+        <property name="title" value="title"/>
+		<property name="attachment" value="http://www.google.es"/>
+		<property name="comments" value="comments"/>
+        <property name="curriculum" ref="curriculum1"/>
+    </bean>
+
+    <bean id="miscellaneusRecord2" class="domain.MiscellaneousRecord">
+        <property name="title" value="title"/>
+		<property name="attachment" value="http://www.google.es"/>
+		<property name="comments" value="comments"/>
+        <property name="curriculum" ref="curriculum2"/>
+    </bean>
 </beans>
