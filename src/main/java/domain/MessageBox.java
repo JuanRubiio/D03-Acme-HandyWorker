@@ -3,7 +3,6 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
@@ -48,7 +47,7 @@ public class MessageBox extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToOne(cascade = CascadeType.ALL, optional = false)
+	@OneToOne(optional = false)
 	public Actor getActor() {
 		return this.actor;
 	}
