@@ -54,7 +54,7 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "EducationalRecord", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL)
 	public Collection<EducationalRecord> getEducationalRecord() {
 		return this.educationalRecord;
 	}
@@ -65,7 +65,7 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "EducationalRecord", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL)
 	public Collection<ProfessionalRecord> getProfessionalRecord() {
 		return this.professionalRecords;
 	}
@@ -76,7 +76,7 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "EducationalRecord", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL)
 	public Collection<EndorserRecord> getEndoserRecords() {
 		return this.endoserRecords;
 	}
@@ -87,7 +87,7 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "EducationalRecord", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL)
 	public Collection<MiscellaneousRecord> getMiscellaneousRecords() {
 		return this.miscellaneousRecords;
 	}

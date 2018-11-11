@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -79,7 +80,7 @@ public class Tutorial extends DomainEntity {
 
 	@Valid
 	@NotEmpty
-	@OneToMany(mappedBy = "Tutorial")
+	@OneToMany(mappedBy = "tutorial", cascade = CascadeType.ALL)
 	public Collection<Section> getSections() {
 		return this.sections;
 	}
@@ -90,7 +91,7 @@ public class Tutorial extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "Tutorial")
+	@OneToMany(mappedBy = "tutorial")
 	public Collection<Sponsorship> getSponsorship() {
 		return this.sponsorships;
 	}
