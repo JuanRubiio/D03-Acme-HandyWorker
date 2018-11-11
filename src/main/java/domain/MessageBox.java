@@ -1,13 +1,10 @@
 
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -46,20 +43,8 @@ public class MessageBox extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Collection<Message>	messages;
-	private Actor				actor;
+	private Actor	actor;
 
-
-	@NotNull
-	@Valid
-	@OneToMany(mappedBy = "messagebox", cascade = CascadeType.ALL)
-	public Collection<Message> getMessages() {
-		return this.messages;
-	}
-
-	public void setMessages(final Collection<Message> messages) {
-		this.messages = messages;
-	}
 
 	@NotNull
 	@Valid

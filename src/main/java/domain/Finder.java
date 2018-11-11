@@ -102,6 +102,7 @@ public class Finder extends DomainEntity {
 		this.category = category;
 	}
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getLastUpdate() {
 		return this.lastUpdate;

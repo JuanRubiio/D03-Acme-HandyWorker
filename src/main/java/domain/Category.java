@@ -43,7 +43,7 @@ public class Category extends DomainEntity {
 
 
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Category getFatherCategory() {
 		return this.father;
 	}

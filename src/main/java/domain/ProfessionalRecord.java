@@ -1,31 +1,34 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
-import javax.validation.Valid;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.URL;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class ProfessionalRecord extends DomainEntity {
 
 	// Atributos ----
-	private String				companyName;
+	private String	companyName;
 
-	private Date				begin;
+	private Date	begin;
 
-	private Date				end;
+	private Date	end;
 
-	private String				role;
+	private String	role;
 
-	private String				attachment;
+	private String	attachment;
 
-	private Collection<String>	comments;
+	private String	comments;
 
 
 	@NotBlank
@@ -39,6 +42,7 @@ public class ProfessionalRecord extends DomainEntity {
 
 	@Past
 	@NotNull
+	@Temporal(TemporalType.DATE)
 	public Date getBegin() {
 		return this.begin;
 	}
@@ -48,6 +52,7 @@ public class ProfessionalRecord extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.DATE)
 	public Date getEnd() {
 		return this.end;
 	}
@@ -65,7 +70,6 @@ public class ProfessionalRecord extends DomainEntity {
 		this.role = role;
 	}
 
-	@URL
 	public String getAttachment() {
 		return this.attachment;
 	}
@@ -74,29 +78,12 @@ public class ProfessionalRecord extends DomainEntity {
 		this.attachment = attachment;
 	}
 
-	@NotEmpty
-	public Collection<String> getComments() {
+	public String getComments() {
 		return this.comments;
 	}
 
-	public void setComments(final Collection<String> comments) {
+	public void setComments(final String comments) {
 		this.comments = comments;
-	}
-
-
-	// Relationships ----
-
-	private Curriculum	curriculum;
-
-
-	@Valid
-	@NotNull
-	public Curriculum getCurriculum() {
-		return this.curriculum;
-	}
-
-	public void setCurriculum(final Curriculum aux) {
-		this.curriculum = aux;
 	}
 
 }

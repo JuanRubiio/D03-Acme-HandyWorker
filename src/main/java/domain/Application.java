@@ -21,17 +21,17 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
-
 @Entity
 @Access(AccessType.PROPERTY)
 public class Application extends DomainEntity {
 
 	//----------Atributos------------
-	private Date	moment;
-	private String	status;
-	private String	customerComment;
-	private Double	price;
-	private String	handyWorkerComments;
+	private Date		moment;
+	private String		status;
+	private String		customerComment;
+	private Double		price;
+	private String		handyWorkerComments;
+	private CreditCard	creditCard;
 
 
 	//----------Getters & Setters-----------
@@ -84,6 +84,15 @@ public class Application extends DomainEntity {
 		this.handyWorkerComments = handyWorkerComments;
 	}
 
+	@Valid
+	public CreditCard getCreditCard() {
+		return this.creditCard;
+	}
+
+	public void setCreditCard(final CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
+
 
 	//------RelationsShip-----------
 	private HandyWorker			handyWorker;
@@ -93,7 +102,7 @@ public class Application extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne(optional=true)
+	@ManyToOne(optional = true)
 	public HandyWorker getHandyWorker() {
 		return this.handyWorker;
 	}
@@ -104,7 +113,7 @@ public class Application extends DomainEntity {
 
 	@NotEmpty
 	@Valid
-	@OneToMany(mappedBy="application",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
 	public Collection<Phase> getWorkPlan() {
 		return this.workplan;
 	}
@@ -115,7 +124,7 @@ public class Application extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne(optional=true)
+	@ManyToOne(optional = true)
 	public FixUpTask getFixUpTask() {
 		return this.fixUpTask;
 	}

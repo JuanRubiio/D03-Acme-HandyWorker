@@ -38,7 +38,7 @@ public class FixUpTask extends DomainEntity {
 
 	@NotBlank
 	@Pattern(regexp = "\\d{6}-[A-Z] {4}")
-	@Column(unique=true)
+	@Column(unique = true)
 	public String getTicker() {
 		return this.ticker;
 	}
@@ -105,16 +105,29 @@ public class FixUpTask extends DomainEntity {
 
 	//-------------RelationShip------------------
 
-	//private Customer				customer;
+	private Customer				customer;
 	private Collection<Complaint>	complaint;
 	private Warranty				warranty;
 	private Category				category;
+
+
 	//private Collection<Finder>		finder;
 	//private Collection<Application>		apply;
 
+	@Valid
+	@NotNull
+	@ManyToOne(optional = true)
+	public Customer getCustomer() {
+		return this.customer;
+	}
+
+	public void setCustomer(final Customer customer) {
+		this.customer = customer;
+	}
+
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy="fixUpTask", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "fixUpTask", cascade = CascadeType.ALL)
 	public Collection<Complaint> getComplaint() {
 		return this.complaint;
 	}
@@ -125,7 +138,7 @@ public class FixUpTask extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne(optional=true)
+	@ManyToOne(optional = true)
 	public Warranty getWarranty() {
 		return this.warranty;
 	}
@@ -136,7 +149,7 @@ public class FixUpTask extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne(optional=true)
+	@ManyToOne(optional = true)
 	public Category getCategory() {
 		return this.category;
 	}

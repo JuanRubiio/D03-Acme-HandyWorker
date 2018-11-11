@@ -1,8 +1,6 @@
 
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
@@ -18,28 +16,28 @@ import org.hibernate.validator.constraints.URL;
 public class Configuration extends DomainEntity {
 
 	// Atributos ---- 
-	private String				banner;
+	private String	banner;
 
-	private String				welcomMessage;
+	private String	welcomMessage;
 
-	private String				welcomMessageEs;
+	private String	welcomMessageEs;
 
-	private Double				vat;
+	private Double	vat;
 
-	private String				countryCode;
+	private String	countryCode;
 
-	private Integer				finderDuration;
+	private Integer	finderDuration;
 
-	private Collection<String>	cards;
+	private String	cards;
 
-	private Integer				maxFiders;
+	private Integer	maxFiders;
 
-	private Integer				absolutMaxFinders;
+	private Integer	absolutMaxFinders;
 
-	private Collection<String>	positiveSpanishWords;
-	private Collection<String>	negativeSpanishWords;
-	private Collection<String>	positiveEnglishWords;
-	private Collection<String>	negativeEnglishWords;
+	private String	positiveSpanishWords;
+	private String	negativeSpanishWords;
+	private String	positiveEnglishWords;
+	private String	negativeEnglishWords;
 
 
 	@NotNull
@@ -98,12 +96,12 @@ public class Configuration extends DomainEntity {
 		this.countryCode = countryCode;
 	}
 
-	@NotNull
-	public Collection<String> getCards() {
+	@NotBlank
+	public String getCards() {
 		return this.cards;
 	}
 
-	public void setCards(final Collection<String> cards) {
+	public void setCards(final String cards) {
 		this.cards = cards;
 	}
 
@@ -127,39 +125,39 @@ public class Configuration extends DomainEntity {
 		this.absolutMaxFinders = absolutMaxFinders;
 	}
 
-	@NotNull
-	public Collection<String> getPositiveSpanishWords() {
+	@NotBlank
+	public String getPositiveSpanishWords() {
 		return this.positiveSpanishWords;
 	}
 
-	public void setPositiveSpanishWords(final Collection<String> positiveSpanishWords) {
+	public void setPositiveSpanishWords(final String positiveSpanishWords) {
 		this.positiveSpanishWords = positiveSpanishWords;
 	}
 
-	@NotNull
-	public Collection<String> getNegativeSpanishWords() {
+	@NotBlank
+	public String getNegativeSpanishWords() {
 		return this.negativeSpanishWords;
 	}
 
-	public void setNegativeSpanishWords(final Collection<String> negativeSpanishWords) {
+	public void setNegativeSpanishWords(final String negativeSpanishWords) {
 		this.negativeSpanishWords = negativeSpanishWords;
 	}
 
-	@NotNull
-	public Collection<String> getPositiveEnglishWords() {
+	@NotBlank
+	public String getPositiveEnglishWords() {
 		return this.positiveEnglishWords;
 	}
 
-	public void setPositiveEnglishWords(final Collection<String> positiveEnglishWords) {
+	public void setPositiveEnglishWords(final String positiveEnglishWords) {
 		this.positiveEnglishWords = positiveEnglishWords;
 	}
 
-	@NotNull
-	public Collection<String> getNegativeEnglishWords() {
+	@NotBlank
+	public String getNegativeEnglishWords() {
 		return this.negativeEnglishWords;
 	}
 
-	public void setNegativeEnglishWords(final Collection<String> negativeEnglishWords) {
+	public void setNegativeEnglishWords(final String negativeEnglishWords) {
 		this.negativeEnglishWords = negativeEnglishWords;
 	}
 

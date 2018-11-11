@@ -3,11 +3,19 @@ package domain;
 
 import java.util.Collection;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Curriculum extends DomainEntity {
 
 	// Atributos ---- 
@@ -31,11 +39,11 @@ public class Curriculum extends DomainEntity {
 	private Collection<ProfessionalRecord>	professionalRecords;
 	private Collection<EndorserRecord>		endoserRecords;
 	private Collection<MiscellaneousRecord>	miscellaneousRecords;
-	private HandyWorker						handyWorker;
 
 
 	@Valid
 	@NotNull
+	@OneToOne(optional = false)
 	public PersonalRecord getPersonalRecord() {
 		return this.personalRecord;
 	}
@@ -46,6 +54,7 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@OneToMany(mappedBy = "EducationalRecord", cascade = CascadeType.ALL)
 	public Collection<EducationalRecord> getEducationalRecord() {
 		return this.educationalRecord;
 	}
@@ -56,6 +65,7 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@OneToMany(mappedBy = "EducationalRecord", cascade = CascadeType.ALL)
 	public Collection<ProfessionalRecord> getProfessionalRecord() {
 		return this.professionalRecords;
 	}
@@ -66,6 +76,7 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@OneToMany(mappedBy = "EducationalRecord", cascade = CascadeType.ALL)
 	public Collection<EndorserRecord> getEndoserRecords() {
 		return this.endoserRecords;
 	}
@@ -76,22 +87,13 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@OneToMany(mappedBy = "EducationalRecord", cascade = CascadeType.ALL)
 	public Collection<MiscellaneousRecord> getMiscellaneousRecords() {
 		return this.miscellaneousRecords;
 	}
 
 	public void setMiscellaneousRecords(final Collection<MiscellaneousRecord> misRecords) {
 		this.miscellaneousRecords = misRecords;
-	}
-
-	@Valid
-	@NotNull
-	public HandyWorker getRanger() {
-		return this.handyWorker;
-	}
-
-	public void setHandyWorker(final HandyWorker handyWorker) {
-		this.handyWorker = handyWorker;
 	}
 
 }
