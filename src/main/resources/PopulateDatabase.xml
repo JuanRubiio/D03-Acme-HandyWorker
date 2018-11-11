@@ -857,8 +857,6 @@
 		<property name="system" value="true" />
 	</bean>
 
-
-
 	<bean id="note1" class="domain.Note">
 		<property name="moment" value="24/10/2018 03:00" />
 		<property name="mandatoryComment" value="mandatoryComment1" />
