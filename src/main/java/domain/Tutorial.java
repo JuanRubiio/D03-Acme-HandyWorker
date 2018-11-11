@@ -42,7 +42,7 @@ public class Tutorial extends DomainEntity {
 		this.title = title;
 	}
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMomentUpdate() {
 		return this.momentUpdate;
 	}
@@ -68,7 +68,7 @@ public class Tutorial extends DomainEntity {
 	}
 
 	@NotNull
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMomentCreate() {
 		return this.momentCreate;
 	}

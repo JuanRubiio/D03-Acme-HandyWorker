@@ -85,6 +85,7 @@ public class FixUpTask extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMaxDate() {
 		return this.maxDate;
 	}
@@ -94,6 +95,7 @@ public class FixUpTask extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMinDate() {
 		return this.minDate;
 	}

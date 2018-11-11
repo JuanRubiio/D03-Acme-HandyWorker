@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -42,6 +44,7 @@ public class Phase extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getStartMoment() {
 		return this.startMoment;
 	}
@@ -51,6 +54,7 @@ public class Phase extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getEndMoment() {
 		return this.endMoment;
 	}
@@ -68,9 +72,7 @@ public class Phase extends DomainEntity {
 		this.ordered = ordered;
 	}
 
-
 	//----------RelationShips------
 	//private Application	apply;
-
 
 }
