@@ -68,7 +68,7 @@ public class Complaint extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "Complaint")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "complaint")
 	public Collection<Report> getReports() {
 		return this.reports;
 	}

@@ -129,7 +129,7 @@ public class FixUpTask extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "fixuptask", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "fixUpTask", cascade = CascadeType.ALL)
 	public Collection<Complaint> getComplaint() {
 		return this.complaint;
 	}
