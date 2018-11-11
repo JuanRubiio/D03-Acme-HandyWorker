@@ -1,55 +1,63 @@
-
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
+import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.ManyToOne;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class ProfessionalRecord extends DomainEntity {
 
 	// Atributos ----
-	private String				companyName;
+	private String companyName;
 
-	private Date				begin;
+	private Date begin;
 
-	private Date				end;
+	private Date end;
 
-	private String				role;
+	private String role;
 
-	private String				attachment;
+	private String attachment;
 
-	private Collection<String>	comments;
-
+	private String comments;
 
 	@NotBlank
 	public String getCompanyName() {
-		return this.companyName;
+		return companyName;
 	}
 
-	public void setCompanyName(final String companyName) {
+	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-
-	@Past
+	
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	@Temporal(TemporalType.DATE)
 	public Date getBegin() {
-		return this.begin;
+		return begin;
 	}
 
 	public void setBegin(final Date begin) {
 		this.begin = begin;
 	}
-
+	
 	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	@Temporal(TemporalType.DATE)
 	public Date getEnd() {
-		return this.end;
+		return end;
 	}
 
 	public void setEnd(final Date end) {
@@ -58,45 +66,43 @@ public class ProfessionalRecord extends DomainEntity {
 
 	@NotBlank
 	public String getRole() {
-		return this.role;
+		return role;
 	}
 
 	public void setRole(final String role) {
 		this.role = role;
 	}
 
-	@URL
+	
 	public String getAttachment() {
-		return this.attachment;
+		return attachment;
 	}
 
 	public void setAttachment(final String attachment) {
 		this.attachment = attachment;
 	}
 
-	@NotEmpty
-	public Collection<String> getComments() {
-		return this.comments;
+	public String getComments() {
+		return comments;
 	}
 
-	public void setComments(final Collection<String> comments) {
+	public void setComments(final String comments) {
 		this.comments = comments;
 	}
 
+// Relationships ----
 
-	// Relationships ----
-
-	private Curriculum	curriculum;
-
+	private Curriculum curriculum;
 
 	@Valid
 	@NotNull
-	public Curriculum getCurriculum() {
-		return this.curriculum;
+	@ManyToOne(optional=false, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	public Curriculum getCurriculum(){
+		return curriculum;
 	}
-
-	public void setCurriculum(final Curriculum aux) {
-		this.curriculum = aux;
+	
+	public void setCurriculum(final Curriculum aux){
+		curriculum=aux;
 	}
-
+	
 }

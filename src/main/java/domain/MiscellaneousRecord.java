@@ -1,66 +1,67 @@
-
 package domain;
 
-import java.util.Collection;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.URL;
-
+@Entity
+@Access(AccessType.PROPERTY)
 public class MiscellaneousRecord extends DomainEntity {
 
 	// Atributos ---- 
-	private String				title;
+	private String	title;
 
-	private String				attachment;
+	private String	attachment;
 
-	private Collection<String>	comments;
-
+	private String	comments;
 
 	@NotBlank
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
 
 	public void setTitle(final String title) {
 		this.title = title;
 	}
-
-	@URL
+	
+	
 	public String getAttachment() {
-		return this.attachment;
+		return attachment;
 	}
 
 	public void setAttachment(final String attachment) {
 		this.attachment = attachment;
 	}
 
-	@NotEmpty
-	public Collection<String> getComments() {
-		return this.comments;
+	public String getComments() {
+		return comments;
 	}
 
-	public void setComments(final Collection<String> comments) {
+	public void setComments(final String comments) {
 		this.comments = comments;
 	}
 
+// Relationships ----
 
-	// Relationships ----
-
-	private Curriculum	curriculum;
-
+	private Curriculum curriculum;
 
 	@Valid
 	@NotNull
-	public Curriculum getCurriculum() {
-		return this.curriculum;
+	@ManyToOne(optional=false, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	public Curriculum getCurriculum(){
+		return curriculum;
 	}
-
-	public void setCurriculum(final Curriculum aux) {
-		this.curriculum = aux;
+	
+	public void setCurriculum(final Curriculum aux){
+		curriculum=aux;
 	}
 
 }
+
