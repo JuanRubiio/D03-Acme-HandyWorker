@@ -1,36 +1,36 @@
+
 package domain;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
-import org.springframework.format.annotation.DateTimeFormat;
-
+import java.util.Collection;
 import java.util.Date;
 
-import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
-@Entity
-@Access(AccessType.PROPERTY)
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+
 public class EducationalRecord extends DomainEntity {
 
 	// Atributos ---- 
-	private String	title;
+	private String				title;
 
-	private Date	begin;
+	private Date				begin;
 
-	private Date	end;
+	private Date				end;
 
-	private String	institution;
+	private String				institution;
 
-	private String	attachment;
+	private String				attachment;
 
-	private String	comments;
+	private Collection<String>	comments;
 
 
 	@NotBlank
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(final String title) {
@@ -38,10 +38,9 @@ public class EducationalRecord extends DomainEntity {
 	}
 
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	@Temporal(TemporalType.DATE)
+	@Past
 	public Date getBegin() {
-		return begin;
+		return this.begin;
 	}
 
 	public void setBegin(final Date begin) {
@@ -49,10 +48,8 @@ public class EducationalRecord extends DomainEntity {
 	}
 
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	@Temporal(TemporalType.DATE)
 	public Date getEnd() {
-		return end;
+		return this.end;
 	}
 
 	public void setEnd(final Date end) {
@@ -61,43 +58,45 @@ public class EducationalRecord extends DomainEntity {
 
 	@NotBlank
 	public String getInstitution() {
-		return institution;
+		return this.institution;
 	}
 
 	public void setInstitution(final String institution) {
 		this.institution = institution;
 	}
 
-	
+	@URL
 	public String getAttachment() {
-		return attachment;
+		return this.attachment;
 	}
 
 	public void setAttachment(final String attachment) {
 		this.attachment = attachment;
 	}
 
-	public String getComments() {
-		return comments;
+	@NotEmpty
+	public Collection<String> getComments() {
+		return this.comments;
 	}
 
-	public void setComments(final String comments) {
+	public void setComments(final Collection<String> comments) {
 		this.comments = comments;
 	}
 
-// Relationships ----
 
-	private Curriculum curriculum;
-	
+	// Relationships ----
+
+	private Curriculum	curriculum;
+
+
 	@Valid
 	@NotNull
-	@ManyToOne(optional=false, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	public Curriculum getCurriculum(){
-		return curriculum;
+	public Curriculum getCurriculum() {
+		return this.curriculum;
 	}
-	
-	public void setCurriculum(final Curriculum aux){
-		curriculum=aux;
+
+	public void setCurriculum(final Curriculum aux) {
+		this.curriculum = aux;
 	}
 
 }

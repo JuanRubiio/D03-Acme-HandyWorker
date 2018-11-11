@@ -1,36 +1,30 @@
+
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
-import javax.persistence.ManyToOne;
 
-@Entity
-@Access(AccessType.PROPERTY)
 public class PersonalRecord extends DomainEntity {
 
 	// Atributos ----
-	private String name;
+	private String	name;
 
-	private String photo;
+	private String	photo;
 
-	private String email;
+	private String	email;
 
-	private String phoneNumber;
+	private String	phoneNumber;
 
-	private String linkedinIdProfile;
+	private String	linkedinIdProfile;
 
 
 	@NotBlank
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(final String name) {
@@ -39,7 +33,7 @@ public class PersonalRecord extends DomainEntity {
 
 	@URL
 	public String getPhoto() {
-		return photo;
+		return this.photo;
 	}
 
 	public void setPhoto(final String photo) {
@@ -48,7 +42,7 @@ public class PersonalRecord extends DomainEntity {
 
 	@Email
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(final String email) {
@@ -57,7 +51,7 @@ public class PersonalRecord extends DomainEntity {
 
 	@NotBlank
 	public String getPhoneNumber() {
-		return phoneNumber;
+		return this.phoneNumber;
 	}
 
 	public void setPhoneNumber(final String phoneNumber) {
@@ -66,26 +60,27 @@ public class PersonalRecord extends DomainEntity {
 
 	@URL
 	public String getLinkedinIdProfile() {
-		return linkedinIdProfile;
+		return this.linkedinIdProfile;
 	}
 
 	public void setLinkedinIdProfile(final String linkedinIdProfile) {
 		this.linkedinIdProfile = linkedinIdProfile;
 	}
-	
-// Relationships ----
 
-	private Curriculum curriculum;
+
+	// Relationships ----
+
+	private Curriculum	curriculum;
+
 
 	@Valid
 	@NotNull
-	@OneToOne(optional=false)
-	public Curriculum getCurriculum(){
-		return curriculum;
+	public Curriculum getCurriculum() {
+		return this.curriculum;
 	}
-	
-	public void setCurriculum(final Curriculum aux){
-		curriculum=aux;
+
+	public void setCurriculum(final Curriculum aux) {
+		this.curriculum = aux;
 	}
 
 }

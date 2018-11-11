@@ -1,67 +1,66 @@
+
 package domain;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
+import java.util.Collection;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Access(AccessType.PROPERTY)
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+
 public class MiscellaneousRecord extends DomainEntity {
 
 	// Atributos ---- 
-	private String	title;
+	private String				title;
 
-	private String	attachment;
+	private String				attachment;
 
-	private String	comments;
+	private Collection<String>	comments;
+
 
 	@NotBlank
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(final String title) {
 		this.title = title;
 	}
-	
-	
+
+	@URL
 	public String getAttachment() {
-		return attachment;
+		return this.attachment;
 	}
 
 	public void setAttachment(final String attachment) {
 		this.attachment = attachment;
 	}
 
-	public String getComments() {
-		return comments;
+	@NotEmpty
+	public Collection<String> getComments() {
+		return this.comments;
 	}
 
-	public void setComments(final String comments) {
+	public void setComments(final Collection<String> comments) {
 		this.comments = comments;
 	}
 
-// Relationships ----
 
-	private Curriculum curriculum;
+	// Relationships ----
+
+	private Curriculum	curriculum;
+
 
 	@Valid
 	@NotNull
-	@ManyToOne(optional=false, cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	public Curriculum getCurriculum(){
-		return curriculum;
+	public Curriculum getCurriculum() {
+		return this.curriculum;
 	}
-	
-	public void setCurriculum(final Curriculum aux){
-		curriculum=aux;
+
+	public void setCurriculum(final Curriculum aux) {
+		this.curriculum = aux;
 	}
 
 }
-
