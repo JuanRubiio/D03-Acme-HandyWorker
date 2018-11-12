@@ -4,6 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -26,13 +27,13 @@ public class Configuration extends DomainEntity {
 
 	private String	countryCode;
 
-	private Integer	finderDuration;
+	private int		finderDuration;
 
 	private String	cards;
 
-	private Integer	maxFiders;
+	private int		maxFiders;
 
-	private Integer	absolutMaxFinders;
+	private int		absolutMaxFinders;
 
 	private String	positiveSpanishWords;
 	private String	negativeSpanishWords;
@@ -42,11 +43,11 @@ public class Configuration extends DomainEntity {
 
 	@NotNull
 	@Range(min = 60, max = 1440)
-	public Integer getFinderDuration() {
+	public int getFinderDuration() {
 		return this.finderDuration;
 	}
 
-	public void setFinderDuration(final Integer finderDuration) {
+	public void setFinderDuration(final int finderDuration) {
 		this.finderDuration = finderDuration;
 	}
 
@@ -79,6 +80,7 @@ public class Configuration extends DomainEntity {
 
 	@NotNull
 	@Min(1)
+	@Digits(integer = 4, fraction = 2)
 	public Double getVat() {
 		return this.vat;
 	}
@@ -107,21 +109,21 @@ public class Configuration extends DomainEntity {
 
 	@NotNull
 	@Range(min = 0, max = 10)
-	public Integer getMaxFiders() {
+	public int getMaxFiders() {
 		return this.maxFiders;
 	}
 
-	public void setMaxFiders(final Integer maxFiders) {
+	public void setMaxFiders(final int maxFiders) {
 		this.maxFiders = maxFiders;
 	}
 
 	@NotNull
 	@Range(min = 0, max = 100)
-	public Integer getAbsolutMaxFinders() {
+	public int getAbsolutMaxFinders() {
 		return this.absolutMaxFinders;
 	}
 
-	public void setAbsolutMaxFinders(final Integer absolutMaxFinders) {
+	public void setAbsolutMaxFinders(final int absolutMaxFinders) {
 		this.absolutMaxFinders = absolutMaxFinders;
 	}
 

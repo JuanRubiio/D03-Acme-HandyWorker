@@ -12,13 +12,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Finder extends DomainEntity {
 
-	private String					key;
+	private String					keyWord;
 	private Double					minPrice;
 	private Double					maxPrice;
 	private Date					minDate;
@@ -33,6 +35,7 @@ public class Finder extends DomainEntity {
 
 	@Valid
 	@OneToMany
+	@NotNull
 	public Collection<FixUpTask> getFixUpTasks() {
 		return this.fixUpTasks;
 	}
@@ -53,13 +56,15 @@ public class Finder extends DomainEntity {
 	}
 
 	public String getKey() {
-		return this.key;
+		return this.keyWord;
 	}
 
-	public void setKey(final String key) {
-		this.key = key;
+	public void setKey(final String keyWord) {
+		this.keyWord = keyWord;
 	}
 
+	@Digits(integer = 4, fraction = 2)
+	@Min(0)
 	public Double getMinPrice() {
 		return this.minPrice;
 	}
@@ -67,7 +72,8 @@ public class Finder extends DomainEntity {
 	public void setMinPrice(final Double minPrice) {
 		this.minPrice = minPrice;
 	}
-
+	@Digits(integer = 4, fraction = 2)
+	@Min(0)
 	public Double getMaxPrice() {
 		return this.maxPrice;
 	}
@@ -76,7 +82,6 @@ public class Finder extends DomainEntity {
 		this.maxPrice = maxPrice;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMinDate() {
 		return this.minDate;
 	}
@@ -85,7 +90,6 @@ public class Finder extends DomainEntity {
 		this.minDate = minDate;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMaxDate() {
 		return this.maxDate;
 	}

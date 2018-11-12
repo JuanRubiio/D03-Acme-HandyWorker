@@ -1226,7 +1226,7 @@
 		<property name="creditCarad" ref="creditCard1" />
 	</bean>
 	<bean id="finder1" class="domain.Finder">
-		<property name="key" value="" />
+		<property name="keyWord" value="" />
 		<property name="minPrice" value="100.00" />
 		<property name="maxPrice" value="200.00" />
 		<property name="minDate" value="2016-08-01 10:00:00" />
@@ -1246,7 +1246,7 @@
 	</bean>
 
 	<bean id="finder2" class="domain.Finder">
-		<property name="key" value="" />
+		<property name="keyWord" value="" />
 		<property name="minPrice" value="100.00" />
 		<property name="maxPrice" value="200.00" />
 		<property name="minDate" value="2016-08-01 10:00:00" />
@@ -1266,7 +1266,7 @@
 	</bean>
 
 	<bean id="finder3" class="domain.Finder">
-		<property name="key" value=" fachada" />
+		<property name="keyWord" value=" fachada" />
 		<property name="minPrice" value="100.00" />
 		<property name="maxPrice" value="200.00" />
 		<property name="minDate" value="2016-08-01 10:00:00" />
@@ -1283,7 +1283,7 @@
 	</bean>
 
 	<bean id="finder4" class="domain.Finder">
-		<property name="key" value="" />
+		<property name="keyWord" value="" />
 		<property name="minPrice" value="100.00" />
 		<property name="maxPrice" value="200.00" />
 		<property name="minDate" value="2016-08-01 10:00:00" />
@@ -1298,5 +1298,4 @@
 		</property>
 		<property name="handyWorker" ref="handyWorker1"/>
 	</bean>
-
 </beans>

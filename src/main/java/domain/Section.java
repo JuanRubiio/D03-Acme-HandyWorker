@@ -17,7 +17,7 @@ public class Section extends DomainEntity {
 	private String		title;
 	private String		text;
 	private String		pictures;
-	private Integer		order;
+	private int			order;
 	private Tutorial	tutorial;
 
 
@@ -57,11 +57,11 @@ public class Section extends DomainEntity {
 		this.pictures = pictures;
 	}
 	@NotNull
-	public Integer getOrder() {
+	public int getOrder() {
 		return this.order;
 	}
 
-	public void setOrder(final Integer order) {
+	public void setOrder(final int order) {
 		this.order = order;
 	}
 

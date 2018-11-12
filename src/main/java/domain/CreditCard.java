@@ -19,9 +19,9 @@ public class CreditCard {
 	private String	brandName;
 	@Column(unique = true)
 	private String	number;
-	private Integer	expiryMonth;
-	private Integer	expiryYear;
-	private Integer	cvv;
+	private int		expiryMonth;
+	private int		expiryYear;
+	private int		cvv;
 
 
 	@NotBlank
@@ -49,23 +49,23 @@ public class CreditCard {
 		this.number = number;
 	}
 	@Range(min = 1, max = 12)
-	public Integer getExpiryMonth() {
+	public int getExpiryMonth() {
 		return this.expiryMonth;
 	}
 
-	public void setExpiryMonth(final Integer expiryMonth) {
+	public void setExpiryMonth(final int expiryMonth) {
 		this.expiryMonth = expiryMonth;
 	}
 	@Min(2018)
-	public Integer getExpiryYear() {
+	public int getExpiryYear() {
 		return this.expiryYear;
 	}
 
-	public void setExpiryYear(final Integer expiryYear) {
+	public void setExpiryYear(final int expiryYear) {
 		this.expiryYear = expiryYear;
 	}
 	@Range(min = 100, max = 999)
-	public Integer getCvv() {
+	public int getCvv() {
 		return this.cvv;
 	}
 

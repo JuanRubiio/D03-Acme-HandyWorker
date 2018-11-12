@@ -23,7 +23,7 @@ public class Phase extends DomainEntity {
 	private String		description;
 	private Date		startMoment;
 	private Date		endMoment;
-	private Integer		ordered;
+	private int			ordered;
 	private Application	application;
 
 
@@ -78,11 +78,11 @@ public class Phase extends DomainEntity {
 	}
 
 	@NotNull
-	public Integer getOrdered() {
+	public int getOrdered() {
 		return this.ordered;
 	}
 
-	public void setOrdered(final Integer ordered) {
+	public void setOrdered(final int ordered) {
 		this.ordered = ordered;
 	}
 
