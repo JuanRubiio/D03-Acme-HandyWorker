@@ -261,7 +261,7 @@
 	</bean>
 
 	<bean id="curriculum2" class="domain.Curriculum">
-		<property name="ticker" value="000000-ZZZY" />
+		<property name="ticker" value="181212-CCCC" />
 		<property name="personalRecord" ref="personalRecord2" />
 		<property name="educationalRecords" ref="educationalRecord2" />
 		<property name="professionalRecords" ref="professionalRecord2" />

@@ -73,6 +73,5 @@ public class Phase extends DomainEntity {
 	}
 
 	//----------RelationShips------
-	//private Application	apply;
 
 }

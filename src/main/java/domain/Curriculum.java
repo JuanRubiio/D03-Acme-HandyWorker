@@ -6,11 +6,13 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -23,6 +25,8 @@ public class Curriculum extends DomainEntity {
 
 
 	@NotBlank
+	@Pattern(regexp = "\\d{6}-[A-Z]{4}")
+	@Column(unique = true)
 	public String getTicker() {
 		return this.ticker;
 	}
