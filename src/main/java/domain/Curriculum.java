@@ -3,11 +3,21 @@ package domain;
 
 import java.util.Collection;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Curriculum extends DomainEntity {
 
 	// Atributos ---- 
@@ -15,6 +25,8 @@ public class Curriculum extends DomainEntity {
 
 
 	@NotBlank
+	@Pattern(regexp = "\\d{6}-[A-Z]{4}")
+	@Column(unique = true)
 	public String getTicker() {
 		return this.ticker;
 	}
@@ -27,15 +39,15 @@ public class Curriculum extends DomainEntity {
 	// Relationships ----
 
 	private PersonalRecord					personalRecord;
-	private Collection<EducationalRecord>	educationalRecord;
+	private Collection<EducationalRecord>	educationalRecords;
 	private Collection<ProfessionalRecord>	professionalRecords;
 	private Collection<EndorserRecord>		endoserRecords;
 	private Collection<MiscellaneousRecord>	miscellaneousRecords;
-	private HandyWorker						handyWorker;
 
 
 	@Valid
 	@NotNull
+	@OneToOne(optional = false)
 	public PersonalRecord getPersonalRecord() {
 		return this.personalRecord;
 	}
@@ -46,26 +58,29 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
-	public Collection<EducationalRecord> getEducationalRecord() {
-		return this.educationalRecord;
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<EducationalRecord> getEducationalRecords() {
+		return this.educationalRecords;
 	}
 
-	public void setEducationalRecord(final Collection<EducationalRecord> edRecord) {
-		this.educationalRecord = edRecord;
+	public void setEducationalRecords(final Collection<EducationalRecord> edRecord) {
+		this.educationalRecords = edRecord;
 	}
 
 	@Valid
 	@NotNull
-	public Collection<ProfessionalRecord> getProfessionalRecord() {
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<ProfessionalRecord> getProfessionalRecords() {
 		return this.professionalRecords;
 	}
 
-	public void setProfessionalRecord(final Collection<ProfessionalRecord> profRecord) {
+	public void setProfessionalRecords(final Collection<ProfessionalRecord> profRecord) {
 		this.professionalRecords = profRecord;
 	}
 
 	@Valid
 	@NotNull
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<EndorserRecord> getEndoserRecords() {
 		return this.endoserRecords;
 	}
@@ -76,22 +91,13 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<MiscellaneousRecord> getMiscellaneousRecords() {
 		return this.miscellaneousRecords;
 	}
 
 	public void setMiscellaneousRecords(final Collection<MiscellaneousRecord> misRecords) {
 		this.miscellaneousRecords = misRecords;
-	}
-
-	@Valid
-	@NotNull
-	public HandyWorker getRanger() {
-		return this.handyWorker;
-	}
-
-	public void setHandyWorker(final HandyWorker handyWorker) {
-		this.handyWorker = handyWorker;
 	}
 
 }

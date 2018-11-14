@@ -1,25 +1,12 @@
 
 package domain;
 
-import java.util.Collection;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
+@Entity
+@Access(AccessType.PROPERTY)
 public class Customer extends Endorser {
-
-	//external attributes
-	private Collection<FixUpTask>	fixUpTasks;
-
-
-	@NotNull
-	@Valid
-	public Collection<FixUpTask> getFixUpTasks() {
-		return this.fixUpTasks;
-	}
-
-	public void setFixUpTasks(final Collection<FixUpTask> fixUpTasks) {
-		this.fixUpTasks = fixUpTasks;
-	}
 
 }

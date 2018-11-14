@@ -3,11 +3,17 @@ package domain;
 
 import java.util.Date;
 
-import javax.validation.Valid;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Note extends DomainEntity {
 
 	private Date	moment;
@@ -16,10 +22,9 @@ public class Note extends DomainEntity {
 	private String	customerComments;
 	private String	refereeComments;
 
-	private Report	report;
-
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -59,15 +64,5 @@ public class Note extends DomainEntity {
 
 	public void setRefereeComments(final String refereeComments) {
 		this.refereeComments = refereeComments;
-	}
-
-	@Valid
-	@NotNull
-	public Report getReport() {
-		return this.report;
-	}
-
-	public void setReport(final Report report) {
-		this.report = report;
 	}
 }

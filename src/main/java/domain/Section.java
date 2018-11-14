@@ -1,23 +1,25 @@
 
 package domain;
 
-import java.util.Collection;
-
-import javax.validation.Valid;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Section extends DomainEntity {
 
-	private String				title;
-	private String				text;
-	private Collection<String>	pictures;
-	private Integer				order;
+	private String	title;
+	private String	text;
+	private String	pictures;
+	private Integer	orden;
 
-	//external attributes
-	private Tutorial			tutorial;
 
+	//	private Integer	order;
 
 	@NotBlank
 	public String getTitle() {
@@ -27,6 +29,7 @@ public class Section extends DomainEntity {
 	public void setTitle(final String title) {
 		this.title = title;
 	}
+
 	@NotBlank
 	public String getText() {
 		return this.text;
@@ -35,31 +38,23 @@ public class Section extends DomainEntity {
 	public void setText(final String text) {
 		this.text = text;
 	}
-	@NotNull
-	public Collection<String> getPictures() {
+
+	public String getPictures() {
 		return this.pictures;
 	}
 
-	public void setPictures(final Collection<String> pictures) {
+	public void setPictures(final String pictures) {
 		this.pictures = pictures;
 	}
+
 	@NotNull
-	public Integer getOrder() {
-		return this.order;
+	@Min(0)
+	public Integer getOrden() {
+		return this.orden;
 	}
 
-	public void setOrder(final Integer order) {
-		this.order = order;
-	}
-
-	@Valid
-	@NotNull
-	public Tutorial getTutorial() {
-		return this.tutorial;
-	}
-
-	public void setTutorial(final Tutorial tutorial) {
-		this.tutorial = tutorial;
+	public void setOrden(final Integer orden) {
+		this.orden = orden;
 	}
 
 }

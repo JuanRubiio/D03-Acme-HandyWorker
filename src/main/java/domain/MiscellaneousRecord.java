@@ -1,23 +1,22 @@
 
 package domain;
 
-import java.util.Collection;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.URL;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class MiscellaneousRecord extends DomainEntity {
 
 	// Atributos ---- 
-	private String				title;
+	private String	title;
 
-	private String				attachment;
+	private String	attachment;
 
-	private Collection<String>	comments;
+	private String	comments;
 
 
 	@NotBlank
@@ -29,7 +28,6 @@ public class MiscellaneousRecord extends DomainEntity {
 		this.title = title;
 	}
 
-	@URL
 	public String getAttachment() {
 		return this.attachment;
 	}
@@ -38,29 +36,14 @@ public class MiscellaneousRecord extends DomainEntity {
 		this.attachment = attachment;
 	}
 
-	@NotEmpty
-	public Collection<String> getComments() {
+	public String getComments() {
 		return this.comments;
 	}
 
-	public void setComments(final Collection<String> comments) {
+	public void setComments(final String comments) {
 		this.comments = comments;
 	}
 
-
 	// Relationships ----
-
-	private Curriculum	curriculum;
-
-
-	@Valid
-	@NotNull
-	public Curriculum getCurriculum() {
-		return this.curriculum;
-	}
-
-	public void setCurriculum(final Curriculum aux) {
-		this.curriculum = aux;
-	}
 
 }

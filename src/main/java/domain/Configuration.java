@@ -1,8 +1,10 @@
 
 package domain;
 
-import java.util.Collection;
-
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -10,44 +12,45 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Configuration extends DomainEntity {
 
 	// Atributos ---- 
-	private String				banner;
+	private String	banner;
 
-	private String				welcomMessage;
+	private String	welcomMessage;
 
-	private String				welcomMessageEs;
+	private String	welcomMessageEs;
 
-	private Double				vat;
+	private Double	vat;
 
-	private String				countryCode;
+	private String	countryCode;
 
-	private Integer				finderDuration;
+	private int		finderDuration;
 
-	private Collection<String>	cards;
+	private String	cards;
 
-	private Integer				maxFiders;
+	private int		maxFiders;
 
-	private Integer				absolutMaxFinders;
+	private int		absolutMaxFinders;
 
-	private Collection<String>	positiveSpanishWords;
-	private Collection<String>	negativeSpanishWords;
-	private Collection<String>	positiveEnglishWords;
-	private Collection<String>	negativeEnglishWords;
+	private String	positiveSpanishWords;
+	private String	negativeSpanishWords;
+	private String	positiveEnglishWords;
+	private String	negativeEnglishWords;
 
 
 	@NotNull
 	@Range(min = 60, max = 1440)
-	public Integer getFinderDuration() {
+	public int getFinderDuration() {
 		return this.finderDuration;
 	}
 
-	public void setFinderDuration(final Integer finderDuration) {
+	public void setFinderDuration(final int finderDuration) {
 		this.finderDuration = finderDuration;
 	}
 
-	@NotBlank
 	@URL
 	public String getBanner() {
 		return this.banner;
@@ -77,6 +80,7 @@ public class Configuration extends DomainEntity {
 
 	@NotNull
 	@Min(1)
+	@Digits(integer = 4, fraction = 2)
 	public Double getVat() {
 		return this.vat;
 	}
@@ -94,68 +98,68 @@ public class Configuration extends DomainEntity {
 		this.countryCode = countryCode;
 	}
 
-	@NotNull
-	public Collection<String> getCards() {
+	@NotBlank
+	public String getCards() {
 		return this.cards;
 	}
 
-	public void setCards(final Collection<String> cards) {
+	public void setCards(final String cards) {
 		this.cards = cards;
 	}
 
 	@NotNull
 	@Range(min = 0, max = 10)
-	public Integer getMaxFiders() {
+	public int getMaxFiders() {
 		return this.maxFiders;
 	}
 
-	public void setMaxFiders(final Integer maxFiders) {
+	public void setMaxFiders(final int maxFiders) {
 		this.maxFiders = maxFiders;
 	}
 
 	@NotNull
 	@Range(min = 0, max = 100)
-	public Integer getAbsolutMaxFinders() {
+	public int getAbsolutMaxFinders() {
 		return this.absolutMaxFinders;
 	}
 
-	public void setAbsolutMaxFinders(final Integer absolutMaxFinders) {
+	public void setAbsolutMaxFinders(final int absolutMaxFinders) {
 		this.absolutMaxFinders = absolutMaxFinders;
 	}
 
-	@NotNull
-	public Collection<String> getPositiveSpanishWords() {
+	@NotBlank
+	public String getPositiveSpanishWords() {
 		return this.positiveSpanishWords;
 	}
 
-	public void setPositiveSpanishWords(final Collection<String> positiveSpanishWords) {
+	public void setPositiveSpanishWords(final String positiveSpanishWords) {
 		this.positiveSpanishWords = positiveSpanishWords;
 	}
 
-	@NotNull
-	public Collection<String> getNegativeSpanishWords() {
+	@NotBlank
+	public String getNegativeSpanishWords() {
 		return this.negativeSpanishWords;
 	}
 
-	public void setNegativeSpanishWords(final Collection<String> negativeSpanishWords) {
+	public void setNegativeSpanishWords(final String negativeSpanishWords) {
 		this.negativeSpanishWords = negativeSpanishWords;
 	}
 
-	@NotNull
-	public Collection<String> getPositiveEnglishWords() {
+	@NotBlank
+	public String getPositiveEnglishWords() {
 		return this.positiveEnglishWords;
 	}
 
-	public void setPositiveEnglishWords(final Collection<String> positiveEnglishWords) {
+	public void setPositiveEnglishWords(final String positiveEnglishWords) {
 		this.positiveEnglishWords = positiveEnglishWords;
 	}
 
-	@NotNull
-	public Collection<String> getNegativeEnglishWords() {
+	@NotBlank
+	public String getNegativeEnglishWords() {
 		return this.negativeEnglishWords;
 	}
 
-	public void setNegativeEnglishWords(final Collection<String> negativeEnglishWords) {
+	public void setNegativeEnglishWords(final String negativeEnglishWords) {
 		this.negativeEnglishWords = negativeEnglishWords;
 	}
 

@@ -1,27 +1,38 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Complaint extends DomainEntity {
 
-	private String		ticker;
-	private Date		moment;
-	private String		description;
-	private String		attachements;
+	private String				ticker;
+	private Date				moment;
+	private String				description;
+	private String				attachements;
 	//external attributes
-	private Referee		referee;
-	private Report		report;
-	private FixUpTask	fixUpTask;
+	private Collection<Report>	reports;
 
 
 	@NotBlank
+	@Pattern(regexp = "\\d{6}-[A-Z]{4}")
+	@Column(unique = true)
 	public String getTicker() {
 		return this.ticker;
 	}
@@ -29,7 +40,9 @@ public class Complaint extends DomainEntity {
 	public void setTicker(final String ticker) {
 		this.ticker = ticker;
 	}
+
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -45,7 +58,7 @@ public class Complaint extends DomainEntity {
 	public void setDescription(final String description) {
 		this.description = description;
 	}
-	@URL
+
 	public String getAttachements() {
 		return this.attachements;
 	}
@@ -56,32 +69,13 @@ public class Complaint extends DomainEntity {
 
 	@Valid
 	@NotNull
-	public Referee getReferee() {
-		return this.referee;
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<Report> getReports() {
+		return this.reports;
 	}
 
-	public void setReferee(final Referee referee) {
-		this.referee = referee;
-	}
-
-	@Valid
-	@NotNull
-	public Report getReport() {
-		return this.report;
-	}
-
-	public void setReport(final Report report) {
-		this.report = report;
-	}
-
-	@Valid
-	@NotNull
-	public FixUpTask getFixUpTask() {
-		return this.fixUpTask;
-	}
-
-	public void setFixUpTask(final FixUpTask fixUpTask) {
-		this.fixUpTask = fixUpTask;
+	public void setReports(final Collection<Report> reports) {
+		this.reports = reports;
 	}
 
 }

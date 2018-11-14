@@ -1,29 +1,36 @@
 
 package domain;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class SocialProfile extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
 
-	private String	nik;
+	private String	nick;
 	private String	socialName;
 	private String	link;
 	private Actor	actor;
 
 
 	@NotBlank
-	public String getNik() {
-		return this.nik;
+	public String getNick() {
+		return this.nick;
 	}
 
-	public void setNik(final String nik) {
-		this.nik = nik;
+	public void setNick(final String nik) {
+		this.nick = nik;
 	}
 
 	@NotBlank
@@ -47,6 +54,7 @@ public class SocialProfile extends DomainEntity {
 	// Relationships ----------------------------------------------------------
 	@NotNull
 	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	public Actor getActor() {
 		return this.actor;
 	}

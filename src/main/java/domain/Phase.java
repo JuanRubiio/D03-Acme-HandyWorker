@@ -3,13 +3,17 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.validation.Valid;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
+@Access(AccessType.PROPERTY)
 public class Phase extends DomainEntity {
 
 	//--------Atributos-------
@@ -17,7 +21,7 @@ public class Phase extends DomainEntity {
 	private String	description;
 	private Date	startMoment;
 	private Date	endMoment;
-	private Integer	ordered;
+	private int		ordered;
 
 
 	//-------Getter & Setter---------
@@ -40,6 +44,7 @@ public class Phase extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getStartMoment() {
 		return this.startMoment;
 	}
@@ -49,6 +54,7 @@ public class Phase extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getEndMoment() {
 		return this.endMoment;
 	}
@@ -58,27 +64,14 @@ public class Phase extends DomainEntity {
 	}
 
 	@NotNull
-	public Integer getOrdered() {
+	public int getOrdered() {
 		return this.ordered;
 	}
 
-	public void setOrdered(final Integer ordered) {
+	public void setOrdered(final int ordered) {
 		this.ordered = ordered;
 	}
 
-
 	//----------RelationShips------
-	private Apply	apply;
-
-
-	@NotNull
-	@Valid
-	public Apply getApply() {
-		return this.apply;
-	}
-
-	public void setApply(final Apply apply) {
-		this.apply = apply;
-	}
 
 }

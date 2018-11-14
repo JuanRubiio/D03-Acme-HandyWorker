@@ -10,11 +10,13 @@
 
 package domain;
 
-import java.util.Collection;
-
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -22,6 +24,8 @@ import org.hibernate.validator.constraints.URL;
 
 import security.UserAccount;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public abstract class Actor extends DomainEntity {
 
 	// Attributes -------------------------------------------------------------
@@ -81,7 +85,6 @@ public abstract class Actor extends DomainEntity {
 	}
 
 	@NotBlank
-	@Pattern(regexp = "(\\+\\d{1,3})?(\\(\\d{1,3}\\))?(\\w{4,})?")
 	public String getPhone() {
 		return this.phone;
 	}
@@ -102,47 +105,18 @@ public abstract class Actor extends DomainEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	private Collection<MessageBox>		messageBoxes;
-	private Collection<Message>			messages;
-	private Collection<SocialProfile>	socialProfiles;
-	private UserAccount					userAccount;
+	private UserAccount	userAccount;
 
 
 	@NotNull
 	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	public UserAccount getUserAccount() {
 		return this.userAccount;
 	}
 
 	public void setUserAccount(final UserAccount userAccount) {
 		this.userAccount = userAccount;
-	}
-	@NotNull
-	@Valid
-	public Collection<MessageBox> getMessageBoxes() {
-		return this.messageBoxes;
-	}
-
-	public void setMessageBoxes(final Collection<MessageBox> messageBoxes) {
-		this.messageBoxes = messageBoxes;
-	}
-	@NotNull
-	@Valid
-	public Collection<Message> getMessages() {
-		return this.messages;
-	}
-
-	public void setMessages(final Collection<Message> messages) {
-		this.messages = messages;
-	}
-	@NotNull
-	@Valid
-	public Collection<SocialProfile> getSocialProfiles() {
-		return this.socialProfiles;
-	}
-
-	public void setSocialProfiles(final Collection<SocialProfile> socialProfiles) {
-		this.socialProfiles = socialProfiles;
 	}
 
 }

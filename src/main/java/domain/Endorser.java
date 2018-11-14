@@ -1,24 +1,23 @@
 
 package domain;
 
-import java.util.Collection;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
+@Entity
+@Access(AccessType.PROPERTY)
 public class Endorser extends Actor {
 
-	private Collection<Endorsement>	endorsement;
+	private Double	score;
 
 
-	@NotNull
-	@Valid
-	public Collection<Endorsement> getEndorsement() {
-		return this.endorsement;
+	public Double getScore() {
+		return this.score;
 	}
 
-	public void setEndorsement(final Collection<Endorsement> endorsement) {
-		this.endorsement = endorsement;
+	public void setScore(final Double score) {
+		this.score = score;
 	}
 
 }

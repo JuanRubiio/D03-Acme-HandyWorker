@@ -4,24 +4,33 @@ package domain;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Tutorial extends DomainEntity {
 
-	private String					title;
-	private Date					momentUpdate;
-	private String					summary;
-	private Collection<String>		pictures;
-	private Date					momentCreate;
+	private String				title;
+	private Date				momentUpdate;
+	private String				summary;
+	private String				pictures;
+	private Date				momentCreate;
 
 	//external attributes
-	private Collection<Section>		section;
-	private Collection<Sponsorship>	sponsorships;
-	private HandyWorker				handyWorker;
+	private Collection<Section>	sections;
+	private HandyWorker			handyWorker;
 
 
 	@NotBlank
@@ -33,6 +42,7 @@ public class Tutorial extends DomainEntity {
 		this.title = title;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMomentUpdate() {
 		return this.momentUpdate;
 	}
@@ -48,16 +58,17 @@ public class Tutorial extends DomainEntity {
 	public void setSummary(final String summary) {
 		this.summary = summary;
 	}
-	@NotNull
-	public Collection<String> getPictures() {
+
+	public String getPictures() {
 		return this.pictures;
 	}
 
-	public void setPictures(final Collection<String> pictures) {
+	public void setPictures(final String pictures) {
 		this.pictures = pictures;
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMomentCreate() {
 		return this.momentCreate;
 	}
@@ -68,26 +79,18 @@ public class Tutorial extends DomainEntity {
 
 	@Valid
 	@NotEmpty
-	public Collection<Section> getSection() {
-		return this.section;
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<Section> getSections() {
+		return this.sections;
 	}
 
-	public void setSection(final Collection<Section> section) {
-		this.section = section;
-	}
-
-	@NotNull
-	@Valid
-	public Collection<Sponsorship> getSponsorship() {
-		return this.sponsorships;
-	}
-
-	public void setSponsorship(final Collection<Sponsorship> sponsorship) {
-		this.sponsorships = sponsorship;
+	public void setSections(final Collection<Section> sections) {
+		this.sections = sections;
 	}
 
 	@Valid
 	@NotNull
+	@ManyToOne(optional = false)
 	public HandyWorker getHandyWorker() {
 		return this.handyWorker;
 	}

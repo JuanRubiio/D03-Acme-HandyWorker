@@ -4,16 +4,24 @@ package domain;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Access(AccessType.PROPERTY)
 public class FixUpTask extends DomainEntity {
 
 	//---------Atributos------------
@@ -29,7 +37,8 @@ public class FixUpTask extends DomainEntity {
 	//--------Getters & Setters-------------------
 
 	@NotBlank
-	@Pattern(regexp = "\\d{6}-[A-Z] {4}")
+	@Pattern(regexp = "\\d{6}-[A-Z]{4}")
+	@Column(unique = true)
 	public String getTicker() {
 		return this.ticker;
 	}
@@ -39,6 +48,7 @@ public class FixUpTask extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -75,6 +85,7 @@ public class FixUpTask extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMaxDate() {
 		return this.maxDate;
 	}
@@ -84,6 +95,7 @@ public class FixUpTask extends DomainEntity {
 	}
 
 	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMinDate() {
 		return this.minDate;
 	}
@@ -99,12 +111,14 @@ public class FixUpTask extends DomainEntity {
 	private Collection<Complaint>	complaint;
 	private Warranty				warranty;
 	private Category				category;
-	private Collection<Finder>		finder;
-	private Collection<Apply>		apply;
 
 
-	@NotNull
+	//private Collection<Finder>		finder;
+	//private Collection<Application>		apply;
+
 	@Valid
+	@NotNull
+	@ManyToOne(optional = true)
 	public Customer getCustomer() {
 		return this.customer;
 	}
@@ -115,6 +129,7 @@ public class FixUpTask extends DomainEntity {
 
 	@NotNull
 	@Valid
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<Complaint> getComplaint() {
 		return this.complaint;
 	}
@@ -125,6 +140,7 @@ public class FixUpTask extends DomainEntity {
 
 	@NotNull
 	@Valid
+	@ManyToOne(optional = true)
 	public Warranty getWarranty() {
 		return this.warranty;
 	}
@@ -135,32 +151,13 @@ public class FixUpTask extends DomainEntity {
 
 	@NotNull
 	@Valid
+	@ManyToOne(optional = true)
 	public Category getCategory() {
 		return this.category;
 	}
 
 	public void setCategory(final Category category) {
 		this.category = category;
-	}
-
-	@NotEmpty
-	@Valid
-	public Collection<Finder> getFinder() {
-		return this.finder;
-	}
-
-	public void setFinder(final Collection<Finder> finder) {
-		this.finder = finder;
-	}
-
-	@NotNull
-	@Valid
-	public Collection<Apply> getApply() {
-		return this.apply;
-	}
-
-	public void setApply(final Collection<Apply> apply) {
-		this.apply = apply;
 	}
 
 }

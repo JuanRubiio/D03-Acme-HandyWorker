@@ -1,51 +1,55 @@
 
 package domain;
 
-import java.util.Collection;
-
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Category extends DomainEntity {
 
 	// Atributos ---- 
-	private String	name;
+	private String	engName;
+	private String	espName;
 
 
 	@NotBlank
-	public String getName() {
-		return this.name;
+	public String getEngName() {
+		return this.engName;
 	}
 
-	public void setName(final String name) {
-		this.name = name;
+	public void setEngName(final String engName) {
+		this.engName = engName;
+	}
+
+	@NotBlank
+	public String getEspName() {
+		return this.espName;
+	}
+
+	public void setEspName(final String espName) {
+		this.espName = espName;
 	}
 
 
 	// Relationships ----------------------------------------------------------
 
-	private Category				fatherCategory;
-	private Collection<Category>	childrenCategories;
+	private Category	father;
 
 
 	@Valid
-	public Category getFatherCategory() {
-		return this.fatherCategory;
+	@ManyToOne(optional = true)
+	public Category getFather() {
+		return this.father;
 	}
 
-	public void setFatherCategory(final Category fatherCategory) {
-		this.fatherCategory = fatherCategory;
-	}
-	@NotNull
-	@Valid
-	public Collection<Category> getChildrenCategories() {
-		return this.childrenCategories;
-	}
-
-	public void setChildrenCategories(final Collection<Category> childrenCategories) {
-		this.childrenCategories = childrenCategories;
+	public void setFather(final Category fatherCategory) {
+		this.father = fatherCategory;
 	}
 
 }
