@@ -33,11 +33,11 @@ public class Endorsement extends DomainEntity {
 	}
 
 	@NotBlank
-	public String getComment() {
+	public String getComments() {
 		return this.comments;
 	}
 
-	public void setComment(final String comments) {
+	public void setComments(final String comments) {
 		this.comments = comments;
 	}
 
@@ -50,11 +50,11 @@ public class Endorsement extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	public Endorser getWriteFor() {
+	public Endorser getWriteFrom() {
 		return this.writeFrom;
 	}
 
-	public void setWriteFor(final Endorser writeFrom) {
+	public void setWriteFrom(final Endorser writeFrom) {
 		this.writeFrom = writeFrom;
 	}
 

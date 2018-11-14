@@ -25,11 +25,11 @@ public class SocialProfile extends DomainEntity {
 
 
 	@NotBlank
-	public String getNik() {
+	public String getNick() {
 		return this.nick;
 	}
 
-	public void setNik(final String nik) {
+	public void setNick(final String nik) {
 		this.nick = nik;
 	}
 

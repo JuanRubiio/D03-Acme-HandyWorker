@@ -9,9 +9,15 @@ import javax.persistence.Entity;
 @Access(AccessType.PROPERTY)
 public class Endorser extends Actor {
 
-	// PREGUNTAR SOBRE ESTO, TE PIDE EL SET
-	//	public Double getScore() {
-	//		return null;
-	//	}
+	private Double	score;
+
+
+	public Double getScore() {
+		return this.score;
+	}
+
+	public void setScore(final Double score) {
+		this.score = score;
+	}
 
 }

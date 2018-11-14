@@ -35,7 +35,7 @@ public class Curriculum extends DomainEntity {
 	// Relationships ----
 
 	private PersonalRecord					personalRecord;
-	private Collection<EducationalRecord>	educationalRecord;
+	private Collection<EducationalRecord>	educationalRecords;
 	private Collection<ProfessionalRecord>	professionalRecords;
 	private Collection<EndorserRecord>		endoserRecords;
 	private Collection<MiscellaneousRecord>	miscellaneousRecords;
@@ -54,29 +54,29 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL)
-	public Collection<EducationalRecord> getEducationalRecord() {
-		return this.educationalRecord;
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<EducationalRecord> getEducationalRecords() {
+		return this.educationalRecords;
 	}
 
-	public void setEducationalRecord(final Collection<EducationalRecord> edRecord) {
-		this.educationalRecord = edRecord;
+	public void setEducationalRecords(final Collection<EducationalRecord> edRecord) {
+		this.educationalRecords = edRecord;
 	}
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL)
-	public Collection<ProfessionalRecord> getProfessionalRecord() {
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<ProfessionalRecord> getProfessionalRecords() {
 		return this.professionalRecords;
 	}
 
-	public void setProfessionalRecord(final Collection<ProfessionalRecord> profRecord) {
+	public void setProfessionalRecords(final Collection<ProfessionalRecord> profRecord) {
 		this.professionalRecords = profRecord;
 	}
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<EndorserRecord> getEndoserRecords() {
 		return this.endoserRecords;
 	}
@@ -87,7 +87,7 @@ public class Curriculum extends DomainEntity {
 
 	@Valid
 	@NotNull
-	@OneToMany(mappedBy = "curriculum", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<MiscellaneousRecord> getMiscellaneousRecords() {
 		return this.miscellaneousRecords;
 	}

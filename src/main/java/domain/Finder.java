@@ -12,8 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -33,38 +31,14 @@ public class Finder extends DomainEntity {
 	private Collection<FixUpTask>	fixUpTasks;
 
 
-	@Valid
-	@OneToMany
-	@NotNull
-	public Collection<FixUpTask> getFixUpTasks() {
-		return this.fixUpTasks;
-	}
-
-	public void setFixUpTasks(final Collection<FixUpTask> fixUpTasks) {
-		this.fixUpTasks = fixUpTasks;
-	}
-
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	public HandyWorker getHandyWorker() {
-		return this.handyWorker;
-	}
-
-	public void setHandyWorker(final HandyWorker handyWorker) {
-		this.handyWorker = handyWorker;
-	}
-
-	public String getKey() {
+	public String getKeyWord() {
 		return this.keyWord;
 	}
 
-	public void setKey(final String keyWord) {
+	public void setKeyWord(final String keyWord) {
 		this.keyWord = keyWord;
 	}
 
-	@Digits(integer = 4, fraction = 2)
-	@Min(0)
 	public Double getMinPrice() {
 		return this.minPrice;
 	}
@@ -72,8 +46,7 @@ public class Finder extends DomainEntity {
 	public void setMinPrice(final Double minPrice) {
 		this.minPrice = minPrice;
 	}
-	@Digits(integer = 4, fraction = 2)
-	@Min(0)
+
 	public Double getMaxPrice() {
 		return this.maxPrice;
 	}
@@ -82,6 +55,7 @@ public class Finder extends DomainEntity {
 		this.maxPrice = maxPrice;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMinDate() {
 		return this.minDate;
 	}
@@ -90,6 +64,7 @@ public class Finder extends DomainEntity {
 		this.minDate = minDate;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMaxDate() {
 		return this.maxDate;
 	}
@@ -98,15 +73,6 @@ public class Finder extends DomainEntity {
 		this.maxDate = maxDate;
 	}
 
-	public String getCategory() {
-		return this.category;
-	}
-
-	public void setCategory(final String category) {
-		this.category = category;
-	}
-
-	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getLastUpdate() {
 		return this.lastUpdate;
@@ -122,6 +88,36 @@ public class Finder extends DomainEntity {
 
 	public void setWarranty(final String warranty) {
 		this.warranty = warranty;
+	}
+
+	public String getCategory() {
+		return this.category;
+	}
+
+	public void setCategory(final String category) {
+		this.category = category;
+	}
+
+	@Valid
+	@NotNull
+	@ManyToOne(optional = false)
+	public HandyWorker getHandyWorker() {
+		return this.handyWorker;
+	}
+
+	public void setHandyWorker(final HandyWorker handyWorker) {
+		this.handyWorker = handyWorker;
+	}
+
+	@Valid
+	@NotNull
+	@OneToMany
+	public Collection<FixUpTask> getFixUpTasks() {
+		return this.fixUpTasks;
+	}
+
+	public void setFixUpTasks(final Collection<FixUpTask> fixUpTasks) {
+		this.fixUpTasks = fixUpTasks;
 	}
 
 }

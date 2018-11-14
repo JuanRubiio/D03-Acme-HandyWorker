@@ -4,8 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -14,23 +13,13 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class Section extends DomainEntity {
 
-	private String		title;
-	private String		text;
-	private String		pictures;
-	private int			order;
-	private Tutorial	tutorial;
+	private String	title;
+	private String	text;
+	private String	pictures;
+	private Integer	orden;
 
 
-	@Valid
-	@NotNull
-	@ManyToOne(optional = false)
-	public Tutorial getTutorial() {
-		return this.tutorial;
-	}
-
-	public void setTutorial(final Tutorial tutorial) {
-		this.tutorial = tutorial;
-	}
+	//	private Integer	order;
 
 	@NotBlank
 	public String getTitle() {
@@ -40,6 +29,7 @@ public class Section extends DomainEntity {
 	public void setTitle(final String title) {
 		this.title = title;
 	}
+
 	@NotBlank
 	public String getText() {
 		return this.text;
@@ -48,7 +38,7 @@ public class Section extends DomainEntity {
 	public void setText(final String text) {
 		this.text = text;
 	}
-	@NotNull
+
 	public String getPictures() {
 		return this.pictures;
 	}
@@ -56,13 +46,15 @@ public class Section extends DomainEntity {
 	public void setPictures(final String pictures) {
 		this.pictures = pictures;
 	}
+
 	@NotNull
-	public int getOrder() {
-		return this.order;
+	@Min(0)
+	public Integer getOrden() {
+		return this.orden;
 	}
 
-	public void setOrder(final int order) {
-		this.order = order;
+	public void setOrden(final Integer orden) {
+		this.orden = orden;
 	}
 
 }

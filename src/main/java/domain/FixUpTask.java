@@ -37,7 +37,7 @@ public class FixUpTask extends DomainEntity {
 	//--------Getters & Setters-------------------
 
 	@NotBlank
-	@Pattern(regexp = "\\d{6}-[A-Z] {4}")
+	@Pattern(regexp = "\\d{6}-[A-Z]{4}")
 	@Column(unique = true)
 	public String getTicker() {
 		return this.ticker;
@@ -129,7 +129,7 @@ public class FixUpTask extends DomainEntity {
 
 	@NotNull
 	@Valid
-	@OneToMany(mappedBy = "fixUpTask", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<Complaint> getComplaint() {
 		return this.complaint;
 	}

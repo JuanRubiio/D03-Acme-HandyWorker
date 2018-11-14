@@ -111,12 +111,12 @@ public class Application extends DomainEntity {
 
 	@NotEmpty
 	@Valid
-	@OneToMany(mappedBy = "application", cascade = CascadeType.ALL)
-	public Collection<Phase> getWorkPlan() {
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<Phase> getWorkplan() {
 		return this.workplan;
 	}
 
-	public void setWorkPlan(final Collection<Phase> workplan) {
+	public void setWorkplan(final Collection<Phase> workplan) {
 		this.workplan = workplan;
 	}
 

@@ -22,16 +22,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Access(AccessType.PROPERTY)
 public class Tutorial extends DomainEntity {
 
-	private String					title;
-	private Date					momentUpdate;
-	private String					summary;
-	private String					pictures;
-	private Date					momentCreate;
+	private String				title;
+	private Date				momentUpdate;
+	private String				summary;
+	private String				pictures;
+	private Date				momentCreate;
 
 	//external attributes
-	private Collection<Section>		sections;
-	private Collection<Sponsorship>	sponsorships;
-	private HandyWorker				handyWorker;
+	private Collection<Section>	sections;
+	private HandyWorker			handyWorker;
 
 
 	@NotBlank
@@ -59,7 +58,7 @@ public class Tutorial extends DomainEntity {
 	public void setSummary(final String summary) {
 		this.summary = summary;
 	}
-	@NotNull
+
 	public String getPictures() {
 		return this.pictures;
 	}
@@ -80,24 +79,13 @@ public class Tutorial extends DomainEntity {
 
 	@Valid
 	@NotEmpty
-	@OneToMany(mappedBy = "tutorial", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<Section> getSections() {
 		return this.sections;
 	}
 
 	public void setSections(final Collection<Section> sections) {
 		this.sections = sections;
-	}
-
-	@NotNull
-	@Valid
-	@OneToMany(mappedBy = "tutorial")
-	public Collection<Sponsorship> getSponsorship() {
-		return this.sponsorships;
-	}
-
-	public void setSponsorship(final Collection<Sponsorship> sponsorship) {
-		this.sponsorships = sponsorship;
 	}
 
 	@Valid

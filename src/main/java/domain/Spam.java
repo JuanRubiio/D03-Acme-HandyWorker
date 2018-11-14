@@ -11,16 +11,16 @@ import javax.validation.constraints.NotNull;
 public class Spam extends DomainEntity {
 
 	// Atributos ----
-	private String	spamWord;
+	private String	spamWords;
 
 
 	@NotNull
 	public String getSpamWords() {
-		return this.spamWord;
+		return this.spamWords;
 	}
 
 	public void setSpamWords(final String spamWords) {
-		this.spamWord = spamWords;
+		this.spamWords = spamWords;
 	}
 
 	// Constructor ----

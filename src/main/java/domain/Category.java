@@ -44,11 +44,11 @@ public class Category extends DomainEntity {
 
 	@Valid
 	@ManyToOne(optional = true)
-	public Category getFatherCategory() {
+	public Category getFather() {
 		return this.father;
 	}
 
-	public void setFatherCategory(final Category fatherCategory) {
+	public void setFather(final Category fatherCategory) {
 		this.father = fatherCategory;
 	}
 

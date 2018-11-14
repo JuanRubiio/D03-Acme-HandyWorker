@@ -28,19 +28,7 @@ public class Report extends DomainEntity {
 
 	private Collection<Note>	collectionNotes;
 	private Referee				referee;
-	private Complaint			complaint;
 
-
-	@NotNull
-	@Valid
-	@ManyToOne(optional = false)
-	public Complaint getComplaint() {
-		return this.complaint;
-	}
-
-	public void setComplaint(final Complaint complaint) {
-		this.complaint = complaint;
-	}
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -53,7 +41,7 @@ public class Report extends DomainEntity {
 	}
 
 	@Valid
-	@OneToMany(mappedBy = "report", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<Note> getCollectionNotes() {
 		return this.collectionNotes;
 	}
